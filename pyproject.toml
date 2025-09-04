@@ -1,0 +1,19 @@
+[project]
+name = "tcc"
+version = "0.1.0"
+description = "ChatBot com RAG UDESC"
+authors = [
+    {name = "Lucas Pietro Biasi Rayzer",email = "145388833+LucasRayzer@users.noreply.github.com"}
+]
+readme = "README.md"
+requires-python = "3.13.5"
+dependencies = [
+    "streamlit (>=1.49.1,<2.0.0)",
+    "python-dotenv (>=1.1.1,<2.0.0)",
+    "langchain (>=0.3.27,<0.4.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
