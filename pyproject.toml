@@ -6,7 +6,7 @@ authors = [
     {name = "Lucas Pietro Biasi Rayzer",email = "145388833+LucasRayzer@users.noreply.github.com"}
 ]
 readme = "README.md"
-requires-python = "3.13.5"
+requires-python = "3.12.7"
 dependencies = [
     "streamlit (>=1.49.1,<2.0.0)",
     "python-dotenv (>=1.1.1,<2.0.0)",
@@ -21,7 +21,8 @@ dependencies = [
     "streamlit-chat (>=0.1.1,<0.2.0)",
     "instructorembedding (>=1.0.1,<2.0.0)",
     "sentence-transformers (>=5.1.0,<6.0.0)",
-    "langchain-huggingface (>=0.3.1,<0.4.0)"
+    "langchain-huggingface (>=0.3.1,<0.4.0)",
+    "accelerate (>=1.10.1,<2.0.0)"
 ]
 
 
