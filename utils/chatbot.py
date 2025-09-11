@@ -5,29 +5,33 @@ from langchain_community.embeddings import HuggingFaceInstructEmbeddings
 from langchain.memory import ConversationBufferMemory
 from langchain.chains import ConversationalRetrievalChain
 from langchain_huggingface import HuggingFacePipeline
-from langchain.prompts import ChatPromptTemplate
+from langchain_core.prompts import ChatPromptTemplate
 
 # Configuração de device
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
 # Carrega modelo e tokenizer
-tokenizer = AutoTokenizer.from_pretrained("google/gemma-7b-it")
+MODEL_NAME = "meta-llama/Llama-3.1-8B-Instruct"
+
+tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
 model = AutoModelForCausalLM.from_pretrained(
-    "google/gemma-7b-it",
-    dtype=torch.float16,
-    device_map="auto"   # deixa HuggingFace distribuir automaticamente
+    MODEL_NAME,
+    torch_dtype=torch.float16,
+    device_map="auto"
 )
 
 # Cria pipeline de geração de texto
 text_gen_pipe = pipeline(
-    "text-generation",
+     "text-generation",
     model=model,
     tokenizer=tokenizer,
-    max_new_tokens=1024,   # aumenta a janela de resposta
+    max_new_tokens=512,
     do_sample=True,
-    temperature=0.8,
+    temperature=0.7,
     top_p=0.9,
-    repetition_penalty=1.1
+    repetition_penalty=1.1,
+    return_full_text=False,
+    eos_token_id=tokenizer.eos_token_id
 )
 
 # Wrap para LangChain
@@ -36,12 +40,15 @@ llm = HuggingFacePipeline(pipeline=text_gen_pipe)
 # Prompt estruturado
 QA_PROMPT = ChatPromptTemplate.from_messages([
     ("system", 
-     "Você é um assistente inteligente especializado em responder perguntas institucionais da UDESC. "
-     "Use os documentos como referência principal. "
-     "Se não encontrar a resposta neles, use seu conhecimento pré-treinado para dar a melhor resposta possível."),
+     "Você é um assistente especializado em responder perguntas institucionais da UDESC. "
+     "Responda SEMPRE em português do Brasil, de forma clara e objetiva. "
+     "Baseie-se apenas nos documentos fornecidos. "
+     "Se a resposta não estiver nos documentos, diga: "
+     "\"Não encontrei informações nos documentos para responder a essa pergunta.\" "
+     "Nunca invente respostas e nunca use conhecimento pré-treinado."),
     ("human", 
      "Contexto dos documentos:\n{context}\n\n"
-     "Pergunta: {question}\nResposta:")
+     "Pergunta: {question}\n\nResposta:")
 ])
 
 
@@ -63,6 +70,7 @@ def create_conversation_chain(vectorStore):
         llm=llm,
         retriever=vectorStore.as_retriever(search_kwargs={"k": 3}),
         memory=memory,
+        chain_type="stuff",
         combine_docs_chain_kwargs={"prompt": QA_PROMPT}
     )
     return conversation_chain
