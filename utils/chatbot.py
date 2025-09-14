@@ -6,6 +6,8 @@ from langchain.memory import ConversationBufferMemory
 from langchain.chains import ConversationalRetrievalChain
 from langchain_huggingface import HuggingFacePipeline
 from langchain_core.prompts import ChatPromptTemplate
+import re
+from langchain.text_splitter import RecursiveCharacterTextSplitter
 
 # Configuração de device
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
@@ -16,41 +18,61 @@ MODEL_NAME = "meta-llama/Llama-3.1-8B-Instruct"
 tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
 model = AutoModelForCausalLM.from_pretrained(
     MODEL_NAME,
-    torch_dtype=torch.float16,
+    dtype=torch.float16,
     device_map="auto"
 )
 
 # Cria pipeline de geração de texto
 text_gen_pipe = pipeline(
-     "text-generation",
+    "text-generation",
     model=model,
     tokenizer=tokenizer,
-    max_new_tokens=512,
-    do_sample=True,
-    temperature=0.7,
-    top_p=0.9,
-    repetition_penalty=1.1,
+    max_new_tokens=128,
+    do_sample=False,
+    repetition_penalty=1.2,  # aumenta penalização
     return_full_text=False,
-    eos_token_id=tokenizer.eos_token_id
+    eos_token_id=tokenizer.eos_token_id,
+    pad_token_id=tokenizer.eos_token_id,  # evita loops
 )
 
 # Wrap para LangChain
 llm = HuggingFacePipeline(pipeline=text_gen_pipe)
 
 # Prompt estruturado
-QA_PROMPT = ChatPromptTemplate.from_messages([
+REFINE_QUESTION_PROMPT = ChatPromptTemplate.from_messages([
     ("system", 
-     "Você é um assistente especializado em responder perguntas institucionais da UDESC. "
-     "Responda SEMPRE em português do Brasil, de forma clara e objetiva. "
-     "Baseie-se apenas nos documentos fornecidos. "
-     "Se a resposta não estiver nos documentos, diga: "
-     "\"Não encontrei informações nos documentos para responder a essa pergunta.\" "
-     "Nunca invente respostas e nunca use conhecimento pré-treinado."),
+     "Responda a pergunta com base apenas no contexto fornecido. "
+     "Não invente informações. Responda em português do Brasil."),
     ("human", 
-     "Contexto dos documentos:\n{context}\n\n"
-     "Pergunta: {question}\n\nResposta:")
+     "Contexto:\n{context_str}\n\nPergunta: {question}\n\nResposta:")
 ])
 
+REFINE_PROMPT = ChatPromptTemplate.from_messages([
+    ("system",
+     "Você recebeu uma resposta inicial e novos documentos. "
+     "Melhore a resposta somente se os novos documentos trouxerem informação adicional. "
+     "Se não trouxerem nada novo, repita a resposta anterior. "
+     "Sempre responda em português do Brasil."),
+    ("human", 
+     "Resposta inicial: {existing_answer}\n\n"
+     "Novos documentos:\n{context_str}\n\n"
+     "Pergunta: {question}\n\nResposta refinada:")
+])
+
+
+
+# Ler arquivos em .md
+def load_markdown_chunks(file_path):
+    with open(file_path, "r", encoding="utf-8") as f:
+        content = f.read()
+
+    splitter = RecursiveCharacterTextSplitter(
+        chunk_size=800,
+        chunk_overlap=100,
+        separators=["\n##", "\n#", "\n\n", "\n", " "]
+    )
+    chunks = splitter.split_text(content)
+    return chunks
 
 # Cria vetor store
 def create_vectorStore(chunks):
@@ -70,7 +92,11 @@ def create_conversation_chain(vectorStore):
         llm=llm,
         retriever=vectorStore.as_retriever(search_kwargs={"k": 3}),
         memory=memory,
-        chain_type="stuff",
-        combine_docs_chain_kwargs={"prompt": QA_PROMPT}
+        chain_type="refine",
+        combine_docs_chain_kwargs={
+        "question_prompt": REFINE_QUESTION_PROMPT,
+        "refine_prompt": REFINE_PROMPT,
+        },
+        return_source_documents=False,   # não precisa
     )
     return conversation_chain
