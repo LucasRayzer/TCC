@@ -17,7 +17,7 @@ def process_files(files):
 def create_text_chunks(text):
      text_splitter = CharacterTextSplitter(
          separator= '\n',
-         chunk_size= 1500,
+         chunk_size= 1000,
         #  Não terminar chunk no meio de palavras, ou frases, funciona como uma sobreposição, o próximo chunk vai ligar com o anterior
          chunk_overlap=300,
          length_function=len

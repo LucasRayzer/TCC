@@ -7,7 +7,8 @@ import numpy as np
 import pandas as pd
 
 # Caminho do documento
-pdf_path = Path("/TCC_TrataDocumentos/Documentos/Resoluções UDESC/resol - consuni/2009/029-2009-cni.pdf")
+
+pdf_path = Path("C:/Users/11941578900/Documents/GitHub/TCC/TCC_TrataDocumentos/Documentos/Resoluções UDESC/resol - consuni/2009/009-2009-cni.pdf")
 
 def extract_text(pdf_path):
     with pdfplumber.open(pdf_path) as pdf:

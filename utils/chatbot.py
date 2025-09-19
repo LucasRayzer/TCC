@@ -7,6 +7,7 @@ from langchain.chains import ConversationalRetrievalChain
 from langchain_huggingface import HuggingFacePipeline
 from langchain_core.prompts import ChatPromptTemplate
 import re
+from langchain.prompts import PromptTemplate
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 
 # Configuração de device
@@ -58,8 +59,33 @@ REFINE_PROMPT = ChatPromptTemplate.from_messages([
      "Novos documentos:\n{context_str}\n\n"
      "Pergunta: {question}\n\nResposta refinada:")
 ])
+from langchain.prompts import PromptTemplate
 
+MAP_PROMPT = PromptTemplate(
+    template=(
+        "Você é um assistente especializado em responder perguntas com base em documentos. "
+        "Responda somente com informações que aparecem no documento fornecido. "
+        "Se o documento não for relevante, apenas diga: 'Sem informação relevante'. "
+        "Responda sempre em português do Brasil.\n\n"
+        "Documento:\n{context}\n\n"
+        "Pergunta: {question}\n\n"
+        "Resposta parcial:"
+    ),
+    input_variables=["context", "question"],
+)
 
+REDUCE_PROMPT = PromptTemplate(
+    template=(
+        "Você receberá várias respostas parciais vindas de diferentes documentos. "
+        "Sua tarefa é combinar essas respostas em uma única resposta coesa. "
+        "Não invente informações, só use o que aparecer nas respostas parciais. "
+        "Responda sempre em português do Brasil.\n\n"
+        "Respostas parciais:\n{summaries}\n\n"
+        "Pergunta: {question}\n\n"
+        "Resposta final:"
+    ),
+    input_variables=["summaries", "question"],
+)
 
 # Ler arquivos em .md
 def load_markdown_chunks(file_path):
@@ -90,12 +116,12 @@ def create_conversation_chain(vectorStore):
 
     conversation_chain = ConversationalRetrievalChain.from_llm(
         llm=llm,
-        retriever=vectorStore.as_retriever(search_kwargs={"k": 3}),
+        retriever=vectorStore.as_retriever(search_kwargs={"k": 5}),  # pode ajustar k
         memory=memory,
-        chain_type="refine",
+        chain_type="map_reduce",
         combine_docs_chain_kwargs={
-        "question_prompt": REFINE_QUESTION_PROMPT,
-        "refine_prompt": REFINE_PROMPT,
+        "question_prompt": MAP_PROMPT,   # prompt aplicado a cada doc
+        "combine_prompt": REDUCE_PROMPT, # prompt de combinação final
         },
         return_source_documents=False,   # não precisa
     )
