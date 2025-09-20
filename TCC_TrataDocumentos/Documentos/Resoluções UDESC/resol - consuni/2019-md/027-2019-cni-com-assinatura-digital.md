@@ -1,0 +1,31 @@
+# Chunks do arquivo 027-2019-cni-com-assinatura-digital.pdf
+
+## Chunk 1
+```
+Art. 1º Fica incluído o art. 13B no Regimento Geral da Fundação Universidade do Estado de
+Santa Catarina - UDESC, aprovado pela Resolução nº 044/2007 – CONSUNI, com a seguinte redação: “
+
+Art. 13B. A composição da Câmara de Pesquisa e Pós-Graduação - CPPG referida no art. 15C do Estatuto, quanto à representação dos servidores técnicos administrativos e dos discentes, fica assim definida:
+I - as vagas de representantes técnicos universitários serão preenchidas por meio do sistema de sufrágio universal, com voto direto e secreto simultaneamente em todas as unidades da UDESC (Centros e Reitoria), permitido o voto em trânsito, ficando eleitas as 3 (três) primeiras chapas com maior número de votos válidos, sendo que: a) em caso de vacância de representantes técnicos universitários da CPPG, devem tomar posse as chapas subsequentes na ordem de classificação no processo eleitoral; b) em caso da vacância ocorrer a partir da segunda metade do período do mandato, a nenhum dos membros desta chapa (titular e suplente) estará vedada a recondução;
+II - as vagas de representantes discentes serão preenchidas por meio do sistema de sufrágio universal, com voto direto e secreto simultaneamente em todas as unidades da
+UDESC (Centros e Reitoria), permitido o voto em trânsito, ficando eleitas as 3 (três) primeiras chapas com maior número de votos válidos, sendo que, em caso de vacância de representantes discentes da CPPG, devem tomar posse as chapas subsequentes na ordem de classificação no processo eleitoral.
+Parágrafo Único - Compete ao Pró-Reitor de Administração baixar os editais das eleições referidas no “caput” deste artigo.”
+
+Art. 2º O representante mencionado no inciso III do art. 15G do Estatuto será designado para mandato de 2 (dois) anos, devendo ser respeitado sistema de rodízio entre todos os Centros da
+UDESC.
+
+Art. 3º Esta Resolução entra em vigor nesta data.
+
+Art. 4º Ficam revogadas as disposições em contrário.
+Florianópolis, 24 de maio de 2019.
+Prof. Marcus Tomasi
+Reitor da UDESC
+Fundação Universidade do Estado de Santa Catarina
+Av. Madre Benvenuta, 2007 – Itacorubi – Florianópolis, SC
+Cep: 88035-001 – Fone (48) 3664 8000 – www.udesc.br .22:81:81 sà 9102/50/42 me
+ISAMOT
+SUCRAM rop lisarB-PCI latigiD arutanissA odnazilitu odanissa iof e ocinôrtele é otnemucod etsed lanigiro
+O .3KC8U50Z ogidóc o e 9102/15590000
+CSEDU ossecorp o emrofni e /otnemidneta/rb.vog.cs.aes.epgs//:ptth etis o esseca ,asserpmi aipóc atsed edadicitnetua a racifirev araP 5
+```
+

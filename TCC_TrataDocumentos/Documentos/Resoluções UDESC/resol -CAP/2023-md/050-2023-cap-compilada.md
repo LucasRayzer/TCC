@@ -1,0 +1,29 @@
+# Chunks do arquivo 050-2023-cap-compilada.pdf
+
+## Chunk 1
+```
+Art. 1º O Anexo I da Resolução nº 16/2019-CONSAD, que “Dispõe sobre a utilização eventual dos espaços físicos e recursos materiais do CAV/UDESC e aprova tabela de ressarcimento deste uso”, passa a vigorar com a seguinte forma, em decorrência da atualização de valores: “Anexo I
+Tabela de ressarcimento de utilização de espaços físicos e recursos materiais do
+CAV/UDESC
+Tipo de Espaço Valor
+Academia de Ginástica R$ 89,00 por dia ou fração
+Auditório “Prof. Flávio Krebs Ramos”, ou Auditório “Verde” ou R$ 351,00 por dia ou fração
+Auditório “Pinhão”
+Campo de Futebol R$ 89,00 por hora ou fração
+Ginásio de Esportes R$ 89,00 por hora ou fração
+Laboratórios e instalações para manejo de animais R$ 440,00 por dia ou fração
+Projetor Digital R$ 30,00 por hora ou fração
+Salas de aula e de reuniões R$ 30,00 por hora ou fração
+Estacionamento de veículos para a Festa Nacional do Pinhão R$ 19.694,00
+
+Art. 2º Esta Resolução entra em vigor nesta data.
+
+Art. 3º Ficam revogadas as disposições em contrário.
+Florianópolis, 20 de junho de 2023.
+Alex Onacli Moreira Fabrin
+Presidente da CAP
+Fundação Universidade do Estado de Santa Catarina
+Av. Madre Benvenuta, 2007 – Itacorubi – Florianópolis, SC
+Cep: 88035-001 – Fone (48) 3664 8000 – www.udesc.br
+```
+

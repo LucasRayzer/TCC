@@ -1,0 +1,30 @@
+# Chunks do arquivo 040-2019-cni-com-assinatura-digital.pdf
+
+## Chunk 1
+```
+Art. 1º Fica referendada, com as seguintes alterações em seu Anexo Único, a Resolução n° 029/2019 – CONSUNI, que “Aprova, nos termos da Resolução nº 026/2008 – CONSUNI, alterada pelas Resoluções nºs 25/2014 - CONSUNI e 76/2017 – CONSUNI, o pagamento de gratificação aos servidores da UDESC que atuaram no Vestibular de Inverno 2019-2.”:
+I – onde se lê:
+ELISANGELA TERESINHA KLEVER 366176801 Fiscal Esp - Transcrição 0,34 R$ 548,34 de prova leia-se:
+ELISANGELA TERESINHA KLEVER 366176801 Fiscal Esp - Tempo 0,19 R$ 306,42
+Adicional de prova
+II – onde se lê:
+MARIA CÉLIA CINTRA DO PRADO DE 362862001 Fiscal Esp - Tempo 0,19 R$ 306,42
+SALLES PENTEADO Adicional leia-se:
+MARIA CÉLIA CINTRA DO PRADO DE 362862001 Fiscal Esp - Transcrição 0,34 R$ 548,34
+SALLES PENTEADO de prova
+
+Art. 2° Esta Resolução entra em vigor nesta data.
+
+Art. 3° Ficam revogadas as disposições em contrário.
+Florianópolis, 11 de julho de 2019.
+Prof. Marcus Tomasi
+Presidente do CONSUNI
+Fundação Universidade do Estado de Santa Catarina
+Av. Madre Benvenuta, 2007 – Itacorubi – Florianópolis, SC
+Cep: 88035-001 – Fone (48) 3664 8000 – www.udesc.br .03:30:71 sà 9102/70/21 me
+ISAMOT
+SUCRAM rop lisarB-PCI latigiD arutanissA odnazilitu odanissa iof e ocinôrtele é otnemucod etsed lanigiro
+O .4TR92X3G ogidóc o e 9102/84901000
+CSEDU ossecorp o emrofni e /otnemidneta/rb.vog.cs.aes.epgs//:sptth etis o esseca ,asserpmi aipóc atsed edadicitnetua a racifirev araP 33
+```
+

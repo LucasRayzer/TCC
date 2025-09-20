@@ -24,8 +24,8 @@ def main():
         if st.session_state.conversation is None:
             st.warning("Primeiro carregue e processe seus arquivos antes de perguntar.")
         else:
-            docs = st.session_state.conversation.retriever.get_relevant_documents(user_question)
-            st.write("Docs recuperados:", [d.page_content[:200] for d in docs])
+            # docs = st.session_state.conversation.retriever.get_relevant_documents(user_question)
+            # st.write("Docs recuperados:", [d.page_content[:200] for d in docs])
             # usando invoke
             response = st.session_state.conversation.invoke({"question": user_question})
             chat_history = response["chat_history"]

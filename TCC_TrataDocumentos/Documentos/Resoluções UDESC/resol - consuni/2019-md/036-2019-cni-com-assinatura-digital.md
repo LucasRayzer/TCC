@@ -1,0 +1,234 @@
+# Chunks do arquivo 036-2019-cni-com-assinatura-digital.pdf
+
+## Chunk 1
+```
+Art. 1º Fica instituído o Regimento Interno da Editora UDESC, da Fundação Universidade do
+Estado de Santa Catarina.
+```
+
+## Chunk 2
+```
+CAPÍTULO I
+CATEGORIA E FINALIDADE
+Art. 2º A Editora Universitária da UDESC, denominada Editora UDESC é um Órgão
+Suplementar Superior vinculado e subordinado ao Gabinete do Reitor, com um Coordenador e um
+Conselho Editorial, normatizado pelo CONSUNI.
+Art. 3º A Editora Universitária tem por finalidade promover e executar a política editorial da
+UDESC.
+```
+
+## Chunk 3
+```
+CAPÍTULO II
+ORGANIZAÇÃO E COMPOSIÇÃO
+Art. 4º A estrutura da Editora UDESC é constituída dos seguintes órgãos de deliberação e execução:
+I. Órgão de deliberação: a) Conselho Editorial.
+II. Órgãos de execução: a) Coordenação; b) Setor Administrativo; c) Setor Editorial.
+Art. 5º O Conselho Editorial é o órgão deliberativo da Editora UDESC e será assim constituído:
+I. do Coordenador da Editora UDESC, como membro nato;
+II. de um representante titular e um suplente de cada Centro de Ensino, indicado pelo respectivo Conselho de Centro;
+III. de um secretário, indicado pelos conselheiros do Conselho Editorial.
+§ 1º A Coordenação da Editora UDESC, será realizada por um coordenador, designado pelo
+Reitor, para exercer a função de confiança de coordenador de órgão suplentar superior.
+§ 2º A presidência do Conselho Editorial será exercida pelo Coordenador da Editora UDESC e na sua ausência pelo membro do Conselho Editorial, mais antigo na UDESC.
+Fundação Universidade do Estado de Santa Catarina
+Av. Madre Benvenuta, 2007 – Itacorubi – Florianópolis, SC
+Cep: 88035-001 – Fone (48) 3664 8000 – www.udesc.br .83:53:41 sà 9102/70/81 me
+ISAMOT
+SUCRAM rop lisarB-PCI latigiD arutanissA odnazilitu odanissa iof e ocinôrtele é otnemucod etsed lanigiro
+O .65Z53WDH ogidóc o e 9102/55780000
+CSEDU ossecorp o emrofni e /otnemidneta/rb.vog.cs.aes.epgs//:sptth etis o esseca ,asserpmi aipóc atsed edadicitnetua a racifirev araP 71 § 3º O mandato de cada conselheiro será de dois anos, permitida uma recondução por mais dois anos.
+I. Em caso de vacância será permitida a recomposição da representação do titular ou do suplente, para completar o mandato.
+§ 4º O secretário do Conselho Editorial será um servidor da UDESC, que exerça atividades junto à Editora.
+I. O secretário poderá ser reconduzido ininterruptamente, a critério dos representantes do
+Conselho Editorial.
+Art. 6º O Setor Administrativo será composto pelos servidores responsáveis por atividades de planejamento, organização, controle e execução das rotinas e atividades administrativas e de apoio à
+Editora UDESC.
+Art. 7º O Setor Editorial será composto pelos servidores responsáveis pelo desenvolvimento das atividades operacionais diretamente relacionadas à produção dos produtos editoriais da Editora
+UDESC.
+```
+
+## Chunk 4
+```
+CAPÍTULO III
+DAS COMPETÊNCIAS E ATRIBUIÇÕES
+Art. 8º São atribuições da Editora UDESC:
+I. editar, produzir e publicar produtos editoriais visando disseminar o saber gerado na UDESC nos âmbitos estadual, nacional e internacional;
+II. incentivar a divulgação do conhecimento novo, por meio de produtos editoriais que atendam as linhas editoriais previstas na Política Editorial da UDESC;
+III. manter intercâmbio com entidades congêneres, com vistas à coedição de publicações de interesse comum e à divulgação e distribuição de livros;
+IV. difundir e preservar a cultura, a memória e a produção acadêmica interna e externa;
+V. estabelecer parcerias de interesse para a UDESC;
+VI. facilitar à comunidade acadêmica e aos demais interessados o acesso aos produtos editoriais publicados
+VII. entregar aos autores 80% (oitenta por cento) dos exemplares impressos em cada triagem ou edição
+VIII. solicitar a Numeração Internacional para Livro (ISBN) para as obras publicadas pela
+Editora UDESC;
+IX. providenciar o depósito legal das obras junto à Biblioteca Nacional;
+X. distribuir exemplares das obras publicadas à Biblioteca Universitária da UDESC
+XI. executar outras atividades inerentes à área, que venham a ser delegadas por autoridade competente.
+Art. 9º Compete ao Coordenador da Editora UDESC:
+I. presidir o Conselho Editorial;
+II. cumprir e fazer cumprir as decisões do Conselho Editorial;
+III. encaminhar para parecer e voto do Conselho Editorial as propostas de publicação, edição, reedição, tradução e coedição, submetidas à Editora UDESC;
+IV. representar a Editora junto à Administração Superior da Universidade;
+V. planejar, organizar, controlar, e dirigir as atividades inerentes à Editora;
+VI. delegar competência aos servidores vinculados à Editora, de acordo com as necessidades internas do órgão;
+VII. elaborar, em conjunto com os servidores do Setor Administrativo e do Setor Editorial a previsão orçamentária da Editora;
+VIII. elaborar, em conjunto com os servidores do Setor Administrativo e do Setor Editorial o plano de publicações da Editora UDESC;
+Fundação Universidade do Estado de Santa Catarina
+Av. Madre Benvenuta, 2007 – Itacorubi – Florianópolis, SC
+Cep: 88035-001 – Fone (48) 3664 8000 – www.udesc.br .83:53:41 sà 9102/70/81 me
+ISAMOT
+SUCRAM rop lisarB-PCI latigiD arutanissA odnazilitu odanissa iof e ocinôrtele é otnemucod etsed lanigiro
+O .65Z53WDH ogidóc o e 9102/55780000
+CSEDU ossecorp o emrofni e /otnemidneta/rb.vog.cs.aes.epgs//:sptth etis o esseca ,asserpmi aipóc atsed edadicitnetua a racifirev araP 72
+IX. elaborar, em conjunto com os servidores do Setor Administrativo, os relatórios de prestação de contas e das atividades da Editora;
+X. propor métodos e rotinas de trabalho para aperfeiçoar o processo administrativo e operacional;
+XI. estabelecer e fixar as normas, por meio de instrumentos , com auxílio dos servidores do
+Setor Editorial, que guiem e auxiliem o autor à elaborar o original da obra encaminhada à Editora;
+XII. manter os instrumentos legais que dizem respeito à Editora e ao Conselho Editorial, atualizados e aprovados nas devidas instâncias;
+XIII. constituir comissões internas para assuntos de interesse da Editora ou para a execução de projetos específicos;
+XIV. elaborar junto ao Conselho Editorial a Política Editorial da UDESC;
+XV. fazer cumprir a Política Editorial da UDESC;
+XVI. propor e pronunciar-se à respeito da celebração de convênios, contratos e licitações inerentes à área;
+XVII. providenciar a assinatura de contratos e convênios pertinentes;
+XVIII. primar pela guarda e preservação do acervo permanente e histórico da Editora, assim como pela memória institucional;
+XIX. executar outras atividades inerentes à função ou que venham a ser delegadas por autoridade competente.
+Art. 10. São atribuições do Presidente do Conselho Editorial:
+I. convocar e presidir as reuniões do Conselho Editorial;
+II. designar, dentre os membros do Conselho Editorial, parecerista para apreciação e voto de solicitações encaminhadas à editora UDESC;
+III. providenciar a substituição de membro do Conselho Editorial no caso de ausência de conselheiro, sem justificativa, em três reuniões consecutivas;
+IV. cumprir e fazer cumprir as decisões do Conselho Editorial;
+V. representar o Conselho Editorial;
+VI. exercer, nos casos de empate, o voto de qualidade;
+VII. apreciar e emitir voto em propostas de publicação, edição, reedição, tradução e coedição, submetidas à Editora UDESC, no caso de impossibilidade de conselheiros;
+VIII. decidir ad referendum, nos casos de urgência, pelo Conselho Editorial;
+IX. submeter as decições ad referendum para homologação do Conselho Editorial;
+X. comunicar ao Conselho Editorial o resultado das avaliações das obras emitidas pelos consultores ad hoc;
+XI. apresentar ao Conselho Editorial o relatório anual da Editora UDESC;
+XII. solicitar auxílio e deliberação do Conselho Editorial sobre quaisquer assuntos relativos à
+Editora UDESC.
+Art. 11. Compete ao Conselho Editorial da Editora UDESC:
+I. elaborar e aprovar a política editorial da Editora UDESC;
+II. funcionar como órgão de consulta da UDESC em matéria editorial de livros;
+III. apreciar e emitir posicionamento em relação às obras a serem publicadas pela editora
+UDESC;
+IV. apreciar e emitir posicionamento em relação ao plano de publicações, elaborado pelo coordenador da Editora UDESC;
+V. apreciar e emitir posicionamento em relação ao relatório anual e as demonstrações financeiras da Editora UDESC;
+VI. constituir comissão de conselheiros e/ou convidados para estudos de assuntos e projetos específicos;
+VII. apreciar os estudos das comissões de estudos de assuntos e projetos específicos;
+VIII. indicar consultores especializados, na qualidade de ad hoc, para apreciação dos originais considerados com mérito;
+IX. apreciar e emitir posicionamento em relação às normas fixadas para guiar e auxiliar o autor à elaborar o original da obra encaminhada à Editora;
+Fundação Universidade do Estado de Santa Catarina
+Av. Madre Benvenuta, 2007 – Itacorubi – Florianópolis, SC
+Cep: 88035-001 – Fone (48) 3664 8000 – www.udesc.br .83:53:41 sà 9102/70/81 me
+ISAMOT
+SUCRAM rop lisarB-PCI latigiD arutanissA odnazilitu odanissa iof e ocinôrtele é otnemucod etsed lanigiro
+O .65Z53WDH ogidóc o e 9102/55780000
+CSEDU ossecorp o emrofni e /otnemidneta/rb.vog.cs.aes.epgs//:sptth etis o esseca ,asserpmi aipóc atsed edadicitnetua a racifirev araP 73
+X. supervisionar, revisar e propor reformulação de originais cujo o autor assumir a responsabilidade pela editoração, revisão ortogramatical, diagramação e/ou impressão da obra;
+XI. zelar pelo atendimento às normas fixadas pela Editora UDESC dos originais encaminhados para publicação.
+XII. propor e avaliar convênios, contratos e acordos;
+XIII. sugerir e apreciar a participação da representação da editora em reuniões, congressos, simpósios e demais certames científicos e culturais;
+XIV. deliberar sobre outros assuntos relativos à Editora UDESC.
+Art. 12. Compete ao secretário do Conselho Editorial da Editora UDESC:
+I. assessorar o presidente e membros do Conselho Editorial na execução de suas tarefas;
+II. encaminhar correspondência aos conselheiros;
+III. organizar o material para as reuniões;
+IV. reunir os pareceres emitidos pelos conselheiros;
+V. encaminhar à consultoria ad hoc, externa, para avaliação do conteúdo, as propostas aprovadas pelo Conselho Editorial, quando pertinente;
+VI. controlar os trâmites das obras enviadas à consultoria ad hoc;
+VII. cuidar das correspondências, acordos, pagamentos, certificados, dentre outros, inerentes ao processo de consultoria ad hoc;
+VIII. comunicar aos autores das decisões do Conselho Editorial;
+IX. lavrar as atas das reuniões, encaminhá-las para apreciação e assinatura do Conselho
+Editorial;
+X. disponibilizar as atas das reuniões.
+Art. 13. São atribuições do responsável pelo Setor Administrativo:
+I. atender e fornecer informações ao público solicitante;
+II. manter atualizados e organizados os arquivos documentais da Editora;
+III. auxiliar na elaboração da previsão orçamentária da Editora;
+IV. auxiliar na elaboração do plano de publicações da Editora UDESC;
+V. auxiliar na elaboração dos relatórios de prestação de contas e das atividades da Editora;
+VI. propor e levar à efeito métodos e rotinas de trabalho para aperfeiçoar o processo administrativo e operacional;
+VII. manter organizado os acervos permanente e histórico de obras da Editora;
+VIII. assessorar o Coordenador na execução de suas tarefas;
+IX. apoiar as atividades dos demais setores da Editora;
+X. dar subsídios e acompanhar os processos de licitações que envolvam à Editora;
+XI. manter atualizadas as informações no website da Editora;
+XII. ajudar quando da participação da editora em reuniões, congressos, simpósios e demais certames científicos e culturais;
+XIII. executar outras atividades inerentes ao Setor, ou que venham a ser delegadas por autoridade competente.
+Art. 14. São atribuições do responsável pelo Setor Editorial:
+I. desenvolver as atividades operacionais diretamente relacionadas à produção das publicações;
+II. colaborar na elaboração de instrumentos que guiem e auxiliem os autores à elaborar os originais das obras emcaminhadas à Editora;
+III. orientar os autores no tocante à elaboração de originais;
+IV. auxiliar na elaboração da previsão orcamentária da editora;
+V. auxiliar na elaboração dos relatórios de atividades da Editora;
+VI. auxiliar na elaboração do plano de publicações da Editora UDESC;
+VII. executar o planejamento editorial, considerando a caracterização formal das publicações da
+Editora, as especificações técnicas, bem como a definição de padrões para coleções e series;
+VIII. elaborar o projeto gráfico das publicações da Editora;
+IX. editorar, diagramar, criar capa e fornecer trabalho de pré-impressão das obras;
+Fundação Universidade do Estado de Santa Catarina
+Av. Madre Benvenuta, 2007 – Itacorubi – Florianópolis, SC
+Cep: 88035-001 – Fone (48) 3664 8000 – www.udesc.br .83:53:41 sà 9102/70/81 me
+ISAMOT
+SUCRAM rop lisarB-PCI latigiD arutanissA odnazilitu odanissa iof e ocinôrtele é otnemucod etsed lanigiro
+O .65Z53WDH ogidóc o e 9102/55780000
+CSEDU ossecorp o emrofni e /otnemidneta/rb.vog.cs.aes.epgs//:sptth etis o esseca ,asserpmi aipóc atsed edadicitnetua a racifirev araP 74
+X. acompanhar a produção gráfica em todas as suas etapas;
+XI. colaborar na criação e/ou produção de catálogos, cartazes, folhetos, convites e outros materiais promocionais referentes à Editora;
+XII. assessorar o Coordenador na execução de tarefas relacionadas a publicação dos produtos editoriais;
+XIII. apoiar as atividades dos demais setores da Editora;
+XIV. dar subsídios aos processos de licitações que envolvam à Editora;
+XV. assessorar o Coordenador e o Conselho Editorial na supervisão, revisão e proposição de reformulação de originais, cujo o autor assuma a responsabilidade pela editoração, revisão ortogramatical, diagramação e/ou impressão da obra;
+XVI. auxiliar no controle da qualidade dos produtos editoriais a serem publicados;
+XVII. executar outras atividades inerentes ao Setor, ou que venham a ser delegadas por autoridade competente.
+```
+
+## Chunk 5
+```
+CAPÍTULO IV
+DO FUNCIONAMENTO
+Art. 15. Do funcionamento do Conselho Editorial:
+I. o Conselho Editorial reúne-se, ordinariamente, a cada três meses e, extraordinariamente, sempre que convocado por seu presidente ou a requerimento de um terço de seus membros titulares;
+II. o Conselho Editorial delibera somente com a presença de metade mais um de seus membros;
+III. as votações do Conselho Editorial são abertas;
+IV. os pareceres emitidos, internos e externos, relacionados ao conteúdo dos originais avaliados poderão ser solicitados, pelo interessado direto;
+V. das decisões do Conselho Editorial cabe pedido de reconsideração, devidamente instruído com justificativas e fatos novos, ao próprio Conselho Editorial;
+VI. cada membro do Conselho Editorial tem direito a um voto e em caso de empate na votação, o voto do Presidente do Conselho Editorial será de qualidade;
+VII. de cada reunião, o secretário lavrará uma ata que será discutida e votada na reunião seguinte e, após aprovação, subscrita pelo Presidente e demais membros presentes;
+VIII. no impedimento ou ausência do Presidente, as reuniões do Conselho Editorial serão presididas por um de seus membros na seguinte ordem: pelo conselheiro mais antigo na UDESC, seguido pelo conselheiro mais antigo no Conselho Editorial;
+IX. a ausência de conselheiro, sem justificativa, em três reuniões consecutivas, caracteriza vacância, devendo o Presidente do Conselho Editorial solicitar sua substituição.
+X. no caso de ausência na reunião o conselheiro deve encaminhar seu relato ao suplente e na impossibilidade deste, ao Secretário do Conselho, de modo que o parecer possa ser lido e votado na reunião, sem prejuízo do interessado;
+XI. em casos de urgência, o Presidente do Conselho Editorial poderá decidir ad referendum pelo
+Conselho Editorial.
+```
+
+## Chunk 6
+```
+CAPÍTULO V
+DAS DISPOSIÇÕES FINAIS
+Art. 16. A proposta de alteração do presente Regimento deverá ser elaborada por um membro do Conselho Editorial e formalizada sob a forma de processo.
+§ 1o O processo será analisado e relatado por um conselheiro designado para tal.
+§ 2o Para ser aprovada, no âmbito do Conselho de Editorial, a proposta deverá ter no mínimo, dois terços dos membros do Conselho Editorial favoráveis.
+§ 3o A aprovação final da alteração do Regimento caberá ao Conselho Universitário.
+Fundação Universidade do Estado de Santa Catarina
+Av. Madre Benvenuta, 2007 – Itacorubi – Florianópolis, SC
+Cep: 88035-001 – Fone (48) 3664 8000 – www.udesc.br .83:53:41 sà 9102/70/81 me
+ISAMOT
+SUCRAM rop lisarB-PCI latigiD arutanissA odnazilitu odanissa iof e ocinôrtele é otnemucod etsed lanigiro
+O .65Z53WDH ogidóc o e 9102/55780000
+CSEDU ossecorp o emrofni e /otnemidneta/rb.vog.cs.aes.epgs//:sptth etis o esseca ,asserpmi aipóc atsed edadicitnetua a racifirev araP 75
+Art. 17. Os casos omissos serão deliberados pelo Conselho Editorial.
+Art. 18. Fica revogada a Resolução nº 063/2013 – CONSUNI.
+Florianópolis, 11 de julho de 2019.
+Prof. Marcus Tomasi
+Presidente do CONSUNI
+Fundação Universidade do Estado de Santa Catarina
+Av. Madre Benvenuta, 2007 – Itacorubi – Florianópolis, SC
+Cep: 88035-001 – Fone (48) 3664 8000 – www.udesc.br .83:53:41 sà 9102/70/81 me
+ISAMOT
+SUCRAM rop lisarB-PCI latigiD arutanissA odnazilitu odanissa iof e ocinôrtele é otnemucod etsed lanigiro
+O .65Z53WDH ogidóc o e 9102/55780000
+CSEDU ossecorp o emrofni e /otnemidneta/rb.vog.cs.aes.epgs//:sptth etis o esseca ,asserpmi aipóc atsed edadicitnetua a racifirev araP 76
+```
+

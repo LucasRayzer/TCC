@@ -1,0 +1,100 @@
+# Chunks do arquivo 022-2019-cni-com-assinatura-digital.pdf
+
+## Chunk 1
+```
+Art. 1º A Política de Formação Continuada aos professores da UDESC tem por objetivo qualificar a docência universitária.
+
+Art. 2ª A política de formação continuada da UDESC tem como eixos norteadores:
+I - Eixo I - Política institucional: envolve temáticas relacionadas à organização da estrutura da universidade, aos objetivos e metas, aos indicadores das avaliações internas e externas, à indissociabilidade entre ensino, pesquisa e extensão e às políticas institucionais voltadas para as ações afirmativas, inclusão, entre outros temas que colaboram para a formação ampla do docente.
+II - Eixo II - Saberes docentes: abrangem temáticas contemporâneas relacionadas à prática docente, as metodologias de ensino superior, aos saberes disciplinares, curriculares, das ciências da educação, da ação pedagógica, bem como as dificuldades que emergem do exercício da docência.
+III - Eixo III – Pedagogia Universitária: engloba debates sobre a docência no ensino superior.
+
+Art. 3º A formação continuada aos professores da UDESC tem como diretrizes:
+I- identidade docente da UDESC;
+II- dimensões individual e organizacional do exercício profissional;
+III- prática docente que inclui metodologias, avaliação do processo de ensino -aprendizagem;
+IV- projetos/ações com acompanhamento e avaliação (continuidade da formação e trajetória profissional);
+V- modalidade presencial e em EaD nos programas/ações de formação continuada;
+VI- constituição de um núcleo de formação continuada central vinculado à PROEN e núcleos setoriais de formação continuada em cada um dos Centros de Ensino da UDESC.
+
+Art. 4º São objetivos da política de formação continuada:
+I - promover a reflexão sobre as práticas pedagógicas e impulsionar a busca de novos saberes;
+II - desenvolver a proposta educativa com vistas a fortalecer o compromisso dos docentes com a formação humana e profissional;
+III - capacitar o docente por meio da criação de espaços de reflexão e de diálogo sobre a prática pedagógica, ampliando conhecimentos acerca das ferramentas de ensino em ambientes virtuais de aprendizagem e de metodologias de ensino inovadoras;
+IV – reconhecer a pedagogia universitária como um conjunto de práticas que favoreçam a diversidade entre as áreas de conhecimento;
+V - conceber ambientes de ensino-aprendizagem como espaços de produção de conhecimento e não somente de transmissão;
+VI - capacitar professores para a gestão da graduação e dos Projetos Pedagógicos de
+Cursos (PPC’s);
+VII - diagnosticar práticas pedagógicas impulsionando a busca de novos conhecimentos e saberes;
+Fundação Universidade do Estado de Santa Catarina
+Av. Madre Benvenuta, 2007 – Itacorubi – 88.035-001
+Florianópolis SC Fone (48) 3321 8000 – www.udesc.br .9102 ed orierevef ed 12 ed ,93 ºn laudatsE oterceD emrofnoc ,83:25:31 sà 9102/50/42 me
+SETRIVZ
+ORDNAEL rop e-PGS latigiD arutanissA odnazilitu odanissa iof e ocinôrtele é otnemucod etsed lanigiro
+O .0GR694UK ogidóc o e 8102/32941000
+CSEDU ossecorp o emrofni e /otnemidneta/rb.vog.cs.aes.epgs//:ptth etis o esseca ,asserpmi aipóc atsed edadicitnetua a racifirev araP 51
+VIII - apoiar o desenvolvimento de ações pedagógicas com vistas ao fortalecimento do compromisso dos professores com a formação continuada;
+IX – proporcionar a socialização de conhecimento e aplicação da metodologia de ensino baseada na modalidade de ensino a distância e da didática do processo do ensino-aprendizado visando o uso de recursos tecnológicos para a mediação do processo de ensino- aprendizagem;
+X - estimular uma cultura institucional quanto ao uso de dispositivos e recursos digitais educativos como estratégias metodológicas no desenvolvimento de cursos de formação continuada.
+
+Art. 5º As ações de formação continuada serão desenvolvidas nos Centros de Ensino da
+UDESC, por meio de um conjunto de atividades capazes de possibilitar a elevação dos padrões de qualidade do ensino superior, bem como a valorização da atividade docente.
+Parágrafo Único. As ações para formação docente serão realizadas nas datas definidas no
+Calendário Acadêmico da UDESC e/ou em outros períodos de acordo com as necessidades demandadas dos Centros.
+
+Art. 6º As ações de formação continuada serão permanentemente avaliadas, devendo expressar resultados sobre a identidade profissional docente, para o exercício da reflexão sobre a prática, para a produção de conhecimentos que qualificam a ação educativa, bem como para estreitar as relações entre os docentes e entre os Centros.
+
+Art. 7º O Núcleo Central de Formação Continuada vinculado à Pró-reitoria de Ensino (PROEN), é um órgão de natureza deliberativa, normativa e de assessoramento de forma a assegurar os objetivos da política de formação continuada da UDESC.
+
+Art. 8º O Núcleo Central de Formação Continuada será composto por:
+I – um coordenador/a escolhido entre os membros do Núcleo de Formação Continuada;
+II – dois representantes servidores (as) da PROEN;
+III – quatro representantes docentes.
+
+Art. 9º O Núcleo Central de Formação Continuada tem por atribuições:
+I – planejar ações, a partir das necessidades emanadas dos Centros de Ensino, que visem à produção de algum impacto no trabalho docente e o alcance dos objetivos da formação continuada;
+II- analisar os dados e as informações gerenciais referentes à implantação e ao desenvolvimento das ações de formação continuada no âmbito dos Centros de Ensino da UDESC;
+III – avaliar as dinâmicas e procedimentos das atividades, propondo estudos para seu aprimoramento;
+IV – organizar dados e informações relativas às demandas decorrentes do compromisso com a qualidade da educação continuada dos docentes da UDESC;
+V - promover e divulgar eventos nas áreas de educação, ensino, pedagogia e avaliação do ensino superior;
+VI – apoiar serviços que auxiliem docentes no constante aprimoramento de sua atividade de ensino, bem como o auxílio acadêmico-administrativo para ações que visam captar recursos e investimentos para inovações e aprimoramento no ensino de graduação;
+VII - capacitar/instrumentalizar pedagogicamente as chefias de departamento e direções de ensino de graduação auxiliando-os no trabalho relacionado à gestão do ensino e ao Projeto
+Pedagógico do Curso;
+VIII - priorizar ações específicas aos novos docentes.
+
+Art. 10 Os Núcleos Setoriais de Formação Continuada serão formados por:
+I – Diretor (a) de Ensino de Graduação ou professor indicado pelo mesmo, sendo este o
+Coordenador do Núcleo;
+II – Chefe (s) de cada Departamento ou professores indicados pelo (s) mesmo (s);
+III – pelo menos um técnico indicado pelo Diretor (a) de Ensino de Graduação.
+
+Art. 11 Os Núcleos Setoriais de Formação Continuada tem por atribuições:
+Fundação Universidade do Estado de Santa Catarina
+Av. Madre Benvenuta, 2007 – Itacorubi – 88.035-001
+Florianópolis SC Fone (48) 3321 8000 – www.udesc.br .9102 ed orierevef ed 12 ed ,93 ºn laudatsE oterceD emrofnoc ,83:25:31 sà 9102/50/42 me
+SETRIVZ
+ORDNAEL rop e-PGS latigiD arutanissA odnazilitu odanissa iof e ocinôrtele é otnemucod etsed lanigiro
+O .0GR694UK ogidóc o e 8102/32941000
+CSEDU ossecorp o emrofni e /otnemidneta/rb.vog.cs.aes.epgs//:ptth etis o esseca ,asserpmi aipóc atsed edadicitnetua a racifirev araP 52
+I - diagnosticar as necessidades dos professores quanto a formação continuada;
+II - planejar, executar, implementar e avaliar as atividades de formação continuada para os docentes do Centro.
+
+Art. 12 Os recursos orçamentários e financeiros alocados para a formação continuada da
+UDESC serão oriundos do orçamento da Fundação Universidade do Estado de Santa Catarina –
+UDESC.
+
+Art. 13 A alocação da carga horária no Plano de Trabalho Individual (PTI) do professor das atividades relacionadas ao Núcleo Central e Setorial de Formação Continuada, dar-se-á nos termos da Resolução de Ocupação Docente.
+
+Art. 14 Esta Resolução entra em vigor nesta data, revogando-se as Resoluções nº 73/2014 –
+CONSUNI e nº 74/2016 - CONSUNI
+Florianópolis, 14 de maio de 2019.
+Prof. Leandro Zvirtes no exercício da Presidência
+Fundação Universidade do Estado de Santa Catarina
+Av. Madre Benvenuta, 2007 – Itacorubi – 88.035-001
+Florianópolis SC Fone (48) 3321 8000 – www.udesc.br .9102 ed orierevef ed 12 ed ,93 ºn laudatsE oterceD emrofnoc ,83:25:31 sà 9102/50/42 me
+SETRIVZ
+ORDNAEL rop e-PGS latigiD arutanissA odnazilitu odanissa iof e ocinôrtele é otnemucod etsed lanigiro
+O .0GR694UK ogidóc o e 8102/32941000
+CSEDU ossecorp o emrofni e /otnemidneta/rb.vog.cs.aes.epgs//:ptth etis o esseca ,asserpmi aipóc atsed edadicitnetua a racifirev araP 53
+```
+
