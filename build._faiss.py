@@ -41,7 +41,7 @@ vectorstore = FAISS.from_texts(texts=all_texts, embedding=embeddings)
 faiss_path = "faiss_index"
 vectorstore.save_local(faiss_path)
 
-# (Opcional) salvar também os textos/chunks em pickle
+# salvar também os textos/chunks em pickle
 with open("chunks.pkl", "wb") as f:
     pickle.dump(all_texts, f)
 

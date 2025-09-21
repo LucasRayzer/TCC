@@ -77,7 +77,7 @@ def create_conversation_chain(vectorStore):
     memory = ConversationBufferMemory(
         memory_key="chat_history",
         return_messages=True,
-        output_key="answer"  # 👈 fix
+        output_key="answer"
     )
 
     conversation_chain = ConversationalRetrievalChain.from_llm(
@@ -87,6 +87,6 @@ def create_conversation_chain(vectorStore):
         chain_type="stuff",
         combine_docs_chain_kwargs={"prompt": QA_PROMPT},
         return_source_documents=True,
-        output_key="answer"  # 👈 também aqui para alinhar tudo
+        output_key="answer" 
     )
     return conversation_chain
