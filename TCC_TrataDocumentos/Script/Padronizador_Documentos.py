@@ -6,7 +6,7 @@ import faiss
 import numpy as np
 import pandas as pd
 
-# Caminho base (ajuste para o seu)
+# Caminho base
 base_path = Path(r"C:\Users\11941578900\Documents\GitHub\TCC\TCC_TrataDocumentos\Documentos")
 
 def extract_text(pdf_path):
@@ -86,7 +86,7 @@ for pdf_path in base_path.rglob("*.pdf"):
 
     # Cria pasta paralela com sufixo -md
     parent_dir = pdf_path.parent
-    md_dir = parent_dir.parent / (parent_dir.name + "-md")   # 1991 -> 1991-md
+    md_dir = parent_dir.parent / (parent_dir.name + "-md")   
     output_md = md_dir / pdf_path.with_suffix(".md").name
 
     save_chunks_markdown(chunks, output_md, pdf_path.name)

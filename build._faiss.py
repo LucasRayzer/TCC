@@ -3,6 +3,7 @@ from pathlib import Path
 from langchain_community.vectorstores import FAISS
 from langchain_community.embeddings import HuggingFaceInstructEmbeddings
 from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain_community.embeddings import HuggingFaceEmbeddings
 import pickle
 
 # Caminho base onde estão os .md
@@ -12,7 +13,7 @@ base_path = Path(r"C:\Users\11941578900\Documents\GitHub\TCC\TCC_TrataDocumentos
 DEVICE = "cuda"
 
 # Modelo de embeddings
-embeddings = HuggingFaceInstructEmbeddings(
+embeddings = HuggingFaceEmbeddings(
     model_name="sentence-transformers/all-mpnet-base-v2",
     model_kwargs={"device": DEVICE}
 )

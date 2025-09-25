@@ -5,6 +5,7 @@ from langchain_community.embeddings import HuggingFaceInstructEmbeddings
 from langchain.memory import ConversationBufferMemory
 from langchain.chains import ConversationalRetrievalChain
 from langchain_huggingface import HuggingFacePipeline
+from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_core.prompts import ChatPromptTemplate
 import re
 from langchain.text_splitter import RecursiveCharacterTextSplitter
@@ -62,7 +63,7 @@ def load_markdown_chunks(file_path):
 
 # Carregar índice FAISS existente
 def load_vectorStore():
-    embeddings = HuggingFaceInstructEmbeddings(
+    embeddings = HuggingFaceEmbeddings(
         model_name="sentence-transformers/all-mpnet-base-v2",
         model_kwargs={"device": DEVICE}
     )
