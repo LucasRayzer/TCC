@@ -83,7 +83,7 @@ def create_conversation_chain(vectorStore):
 
     conversation_chain = ConversationalRetrievalChain.from_llm(
         llm=llm,
-        retriever=vectorStore.as_retriever(search_kwargs={"k": 8}),
+        retriever=vectorStore.as_retriever(search_kwargs={"k": 15}),
         memory=memory,
         chain_type="stuff",
         combine_docs_chain_kwargs={"prompt": QA_PROMPT},

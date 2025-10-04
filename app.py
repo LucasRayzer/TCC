@@ -1,4 +1,5 @@
 import streamlit as st
+from utils import chatbot_Gemini
 from utils import chatbot
 from streamlit_chat import message
 
