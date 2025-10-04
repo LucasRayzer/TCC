@@ -1,5 +1,5 @@
 import streamlit as st
-from utils import chatbot_Gemini
+from utils import chatbot
 from streamlit_chat import message
 
 st.set_page_config(page_title='ChatUdesc', page_icon=':books:')
@@ -11,10 +11,10 @@ if "conversation" not in st.session_state:
     with st.spinner("Aguarde, preparando o assistente..."):
         # A primeira chamada a load_vectorStore() é carregada do disco
         # Todas as próximas chamadas serão instantâneas pois pega do cachce
-        vector_store = chatbot_Gemini.load_vectorStore()
+        vector_store = chatbot.load_vectorStore()
         
         # Cria a chain de conversação
-        st.session_state.conversation = chatbot_Gemini.create_conversation_chain(vector_store)
+        st.session_state.conversation = chatbot.create_conversation_chain(vector_store)
 
 # Interface
 # Inicializa o histórico de mensagens se ele não existir

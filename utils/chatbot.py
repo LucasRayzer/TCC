@@ -48,7 +48,7 @@ QA_PROMPT = ChatPromptTemplate.from_messages([
      "Contexto:\n{context}\n\nPergunta: {question}\n\nResposta:")
 ])
 
-# Ler arquivos em .md (mantido caso queira reprocessar algum doc isolado)
+# Ler arquivos em .md
 def load_markdown_chunks(file_path):
     with open(file_path, "r", encoding="utf-8") as f:
         content = f.read()
