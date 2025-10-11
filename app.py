@@ -40,3 +40,4 @@ if user_question:
     # Adiciona a resposta do bot ao histórico
     st.session_state.messages.append({"content": answer, "is_user": False})
     message(answer, is_user=False)
+    
