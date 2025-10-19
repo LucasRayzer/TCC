@@ -67,7 +67,7 @@ def embed_and_store(chunks, index, model):
 
 
 # Inicializa FAISS + modelo
-model = SentenceTransformer("all-MiniLM-L6-v2")
+model = SentenceTransformer("intfloat/multilingual-e5-base")
 dimension = model.get_sentence_embedding_dimension()
 index = faiss.IndexFlatL2(dimension)
 

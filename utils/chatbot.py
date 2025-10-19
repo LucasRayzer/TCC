@@ -64,7 +64,7 @@ def load_markdown_chunks(file_path):
 # Carregar índice FAISS existente
 def load_vectorStore():
     embeddings = HuggingFaceEmbeddings(
-        model_name="sentence-transformers/all-mpnet-base-v2",
+        model_name="intfloat/multilingual-e5-base",
         model_kwargs={"device": DEVICE}
     )
     vectorStore = FAISS.load_local(
@@ -83,7 +83,7 @@ def create_conversation_chain(vectorStore):
 
     conversation_chain = ConversationalRetrievalChain.from_llm(
         llm=llm,
-        retriever=vectorStore.as_retriever(search_kwargs={"k": 8}),
+        retriever=vectorStore.as_retriever(search_kwargs={"k": 2}),
         memory=memory,
         chain_type="stuff",
         combine_docs_chain_kwargs={"prompt": QA_PROMPT},

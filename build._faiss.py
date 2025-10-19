@@ -14,7 +14,7 @@ DEVICE = "cuda"
 
 # Modelo de embeddings
 embeddings = HuggingFaceEmbeddings(
-    model_name="sentence-transformers/all-mpnet-base-v2",
+    model_name="intfloat/multilingual-e5-base",
     model_kwargs={"device": DEVICE}
 )
 

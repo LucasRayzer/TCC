@@ -11,20 +11,19 @@ from ragas.metrics import (
     answer_correctness,
 )
 
-# --- MUDANÇA PRINCIPAL AQUI ---
-# 1. Importamos o chatbot Llama para GERAR as respostas (o "aluno")
+# 
+#  o chatbot Llama para GERAR as respostas (o "aluno")
 from utils.chatbot import load_vectorStore, create_conversation_chain
-# 2. Importamos o LLM do Gemini para AVALIAR as respostas (o "juiz")
+#  o LLM do Gemini para AVALIAR as respostas (o "juiz")
 from utils.chatbot_Gemini import llm as judge_llm
-# --------------------------------
+
 
 # Configuração do Logging
 logging.basicConfig(level=logging.INFO)
 LOGGER = logging.getLogger(__name__)
 
-# Seu Dataset (sem alterações)
 questions = [
-    # ... (sua lista de perguntas completa aqui) ...
+    
     "Qual a finalidade da Comissão Própria de Avaliação (CPA) da UDESC, segundo a Resolução Nº 008/2009?",
     "Como é constituída a Comissão Própria de Avaliação (CPA)?",
     "Qual a duração do mandato dos membros da CPA e das Comissões Setoriais de Avaliação (CSAs)?",
@@ -42,7 +41,7 @@ questions = [
     "Qual a carga horária máxima que um docente pode alocar para projetos de ensino, pesquisa ou ações de extensão?",
 ]
 ground_truths = [
-    # ... (sua lista de respostas completas aqui) ...
+    
     ["A CPA tem por finalidade a implementação, coordenação, condução e sistematização do processo de avaliação institucional da UDESC."],
     ["A CPA é constituída pelo Coordenador da Coordenadoria de Avaliação Institucional (como Presidente), quatro representantes docentes, três representantes técnico-administrativos, dois representantes do corpo discente e um representante da sociedade civil organizada."],
     ["Os membros da CPA e das CSAs, com exceção do presidente da CPA, terão um mandato de dois anos, sendo permitida a recondução."],
@@ -66,7 +65,7 @@ vector_store = load_vectorStore()
 conversation_chain = create_conversation_chain(vector_store)
 
 evaluation_data = []
-# ... (o resto do seu código de geração de dados permanece o mesmo) ...
+
 print("Gerando respostas para as perguntas de teste...")
 for i, question in enumerate(questions):
     try:
@@ -99,7 +98,7 @@ metrics = [
 ]
 
 from langchain_community.embeddings import HuggingFaceEmbeddings
-hf_embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
+hf_embeddings = HuggingFaceEmbeddings(model_name="intfloat/multilingual-e5-base")
 
 # Execução da Avaliação (usando o Gemini como juiz)
 print("\nExecutando a avaliação com RAGAS usando Gemini como 'juiz'...")
@@ -107,7 +106,7 @@ try:
     result = evaluate(
         dataset=ragas_dataset,
         metrics=metrics,
-        llm=judge_llm,  # <-- Usamos o modelo Gemini aqui
+        llm=judge_llm, 
         embeddings=hf_embeddings,
         raise_exceptions=True
     )
@@ -116,8 +115,8 @@ try:
     df_results = result.to_pandas()
     print("\n--- RESULTADOS DA AVALIAÇÃO ---")
     print(df_results)
-    df_results.to_csv("ragas_evaluation_results_70B.csv", index=False)
-    print("\nResultados salvos em 'ragas_evaluation_results.csv'")
+    df_results.to_csv("ragas_evaluation_results_8B_2k.csv", index=False)
+    print("\nResultados salvos em 'ragas_evaluation_results_8B_2k.csv'")
 
 except Exception as e:
     LOGGER.error(f"A AVALIAÇÃO FALHOU! Ocorreu um erro durante 'ragas.evaluate':")
