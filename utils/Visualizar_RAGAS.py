@@ -12,7 +12,6 @@ try:
     print("Arquivo lido com sucesso!")
 
     #tabela html
-
     print("Gerando tabela HTML estilizada...")
     numeric_cols = ['faithfulness', 'answer_relevancy', 'context_precision', 'context_recall', 'answer_correctness']
 
@@ -62,7 +61,7 @@ try:
     print(f"--> Gráfico de barras salvo como '{chart_file_path}'")
 
     #tabela no navegador
-    print("\nAbrindo a tabela de resultados no seu navegador...")
+    print("\nAbrindo a tabela de resultados no navegador...")
     webbrowser.open('file://' + os.path.realpath(html_file_path))
 
 except FileNotFoundError:

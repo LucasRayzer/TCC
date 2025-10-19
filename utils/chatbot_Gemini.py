@@ -21,12 +21,6 @@ DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 llm = ChatGoogleGenerativeAI(
     model="gemini-2.5-pro",
     google_api_key=os.getenv("GOOGLE_API_KEY"),
-    safety_settings={
-        HarmCategory.HARM_CATEGORY_HARASSMENT: HarmBlockThreshold.BLOCK_NONE,
-        HarmCategory.HARM_CATEGORY_HATE_SPEECH: HarmBlockThreshold.BLOCK_NONE,
-        HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT: HarmBlockThreshold.BLOCK_NONE,
-        HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT: HarmBlockThreshold.BLOCK_NONE,
-    },
 )
 
 QA_PROMPT = ChatPromptTemplate.from_messages([
@@ -53,7 +47,7 @@ def load_markdown_chunks(file_path):
 def load_vectorStore():
 
     embeddings = HuggingFaceEmbeddings(
-        model_name="sentence-transformers/all-mpnet-base-v2",
+        model_name="intfloat/multilingual-e5-base",
         model_kwargs={"device": DEVICE}
     )
     vectorStore = FAISS.load_local(
