@@ -13,6 +13,7 @@ from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_core.prompts import ChatPromptTemplate
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 import streamlit as st
+from langchain.chains import RetrievalQA
 from langchain_google_genai import HarmBlockThreshold, HarmCategory
 
 
@@ -21,29 +22,24 @@ DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 llm = ChatGoogleGenerativeAI(
     model="gemini-2.5-pro",
     google_api_key=os.getenv("GOOGLE_API_KEY"),
+    safety_settings={
+        HarmCategory.HARM_CATEGORY_HARASSMENT: HarmBlockThreshold.BLOCK_NONE,
+        HarmCategory.HARM_CATEGORY_HATE_SPEECH: HarmBlockThreshold.BLOCK_NONE,
+        HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT: HarmBlockThreshold.BLOCK_NONE,
+        HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT: HarmBlockThreshold.BLOCK_NONE,
+    },
 )
 
 QA_PROMPT = ChatPromptTemplate.from_messages([
-    ("system",
-     "Responda à pergunta com base apenas no contexto fornecido. "
-     "Não invente informações. Responda em português do Brasil."),
-    ("human",
-     "Contexto:\n{context}\n\nPergunta: {question}\n\nResposta:")
+    ("system", 
+      "Você é um assistente universitário factual. Use *estritamente* os trechos de contexto fornecidos para responder à pergunta. "
+      "Não faça suposições nem use conhecimento externo. "
+      "Se a informação não estiver no contexto, responda exatamente: 'Não foi possível encontrar a informação no contexto fornecido.' "
+      "Responda em português do Brasil."),
+    ("human", 
+      "Contexto:\n{context}\n\nPergunta: {question}\n\nResposta Factual:")
 ])
 
-
-def load_markdown_chunks(file_path):
-    with open(file_path, "r", encoding="utf-8") as f:
-        content = f.read()
-
-    splitter = RecursiveCharacterTextSplitter(
-        chunk_size=800,
-        chunk_overlap=100,
-        separators=["\n##", "\n#", "\n\n", "\n", " "]
-    )
-    chunks = splitter.split_text(content)
-    return chunks
-@st.cache_resource 
 def load_vectorStore():
 
     embeddings = HuggingFaceEmbeddings(
@@ -51,25 +47,19 @@ def load_vectorStore():
         model_kwargs={"device": DEVICE}
     )
     vectorStore = FAISS.load_local(
-        "faiss_index",
+        "faiss_index_reduzido_mapeado",
         embeddings,
         allow_dangerous_deserialization=True
     )
     return vectorStore
 
 def create_conversation_chain(vectorStore):
-    memory = ConversationBufferMemory(
-        memory_key="chat_history",
-        return_messages=True,
-        output_key="answer"
-    )
-    conversation_chain = ConversationalRetrievalChain.from_llm(
+    
+    qa_chain = RetrievalQA.from_chain_type(
         llm=llm,
-        retriever=vectorStore.as_retriever(search_kwargs={"k": 2}),
-        memory=memory,
         chain_type="stuff",
-        combine_docs_chain_kwargs={"prompt": QA_PROMPT},
+        retriever=vectorStore.as_retriever(search_kwargs={"k": 8}),
+        chain_type_kwargs={"prompt": QA_PROMPT},
         return_source_documents=True,
-        output_key="answer"
     )
-    return conversation_chain
+    return qa_chain

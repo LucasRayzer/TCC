@@ -1,13 +1,10 @@
 import re
 import pdfplumber
 from pathlib import Path
-from sentence_transformers import SentenceTransformer
-import faiss
 import numpy as np
-import pandas as pd
 
 # Caminho base
-base_path = Path(r"C:\Users\11941578900\Documents\GitHub\TCC\TCC_TrataDocumentos\Documentos")
+base_path = Path(r"C:\Users\11941578900\Documents\GitHub\TCC\TCC_TrataDocumentos\Resoluções-Reduzido")
 
 def extract_text(pdf_path):
     with pdfplumber.open(pdf_path) as pdf:
@@ -61,15 +58,10 @@ def embed_and_store(chunks, index, model):
     if not chunks:  # se não houver chunks, não faz nada
         return index
     vectors = model.encode(chunks, convert_to_numpy=True)
-    vectors = np.atleast_2d(vectors)  # garante shape (n, d)
+    vectors = np.atleast_2d(vectors)  # garante corpo (n, d)
     index.add(vectors.astype(np.float32))
     return index
 
-
-# Inicializa FAISS + modelo
-model = SentenceTransformer("intfloat/multilingual-e5-base")
-dimension = model.get_sentence_embedding_dimension()
-index = faiss.IndexFlatL2(dimension)
 
 # Percorre todos os PDFs
 for pdf_path in base_path.rglob("*.pdf"):
@@ -90,13 +82,3 @@ for pdf_path in base_path.rglob("*.pdf"):
     output_md = md_dir / pdf_path.with_suffix(".md").name
 
     save_chunks_markdown(chunks, output_md, pdf_path.name)
-
-    # Embeddings
-    index = embed_and_store(chunks, index, model)
-    print(f" - {len(chunks)} chunks salvos em {output_md}")
-
-# Exporta todos os vetores para CSV único
-xb = index.reconstruct_n(0, index.ntotal)
-df = pd.DataFrame(xb)
-df.to_csv("vetores.csv", index=False)
-print(f"\nProcessados todos os PDFs. Total de chunks no FAISS: {index.ntotal}")

@@ -1,7 +1,5 @@
-import os
 import logging
 from datasets import Dataset
-import pandas as pd
 from ragas import evaluate
 from ragas.metrics import (
     faithfulness,
@@ -11,10 +9,10 @@ from ragas.metrics import (
     answer_correctness,
 )
 
-# 
-#  o chatbot Llama para GERAR as respostas (o "aluno")
+
+# o chatbot Llama para gerar as respostas
 from utils.chatbot import load_vectorStore, create_conversation_chain
-#  o LLM do Gemini para AVALIAR as respostas (o "juiz")
+# o LLM do Gemini para avaliar as respostas 
 from utils.chatbot_Gemini import llm as judge_llm
 
 
@@ -59,7 +57,7 @@ ground_truths = [
     ["A alocação de carga horária para projetos de ensino, de pesquisa e/ou ações de extensão, por docente, não poderá exceder, por semestre, a 50% (cinquenta por cento) da carga horária de seu regime de trabalho."],
 ]
 
-# Geração do Dataset (usando o chatbot Llama)
+# Geração do Dataset
 print("Preparando o chatbot Llama para gerar o dataset de avaliação...")
 vector_store = load_vectorStore()
 conversation_chain = create_conversation_chain(vector_store)
@@ -100,7 +98,7 @@ metrics = [
 from langchain_community.embeddings import HuggingFaceEmbeddings
 hf_embeddings = HuggingFaceEmbeddings(model_name="intfloat/multilingual-e5-base")
 
-# Execução da Avaliação (usando o Gemini como juiz)
+# Execução da avaliação 
 print("\nExecutando a avaliação com RAGAS usando Gemini como 'juiz'...")
 try:
     result = evaluate(
@@ -113,10 +111,10 @@ try:
 
     print("Avaliação concluída!")
     df_results = result.to_pandas()
-    print("\n--- RESULTADOS DA AVALIAÇÃO ---")
+    print("\nRESULTADOS DA AVALIAÇÃO")
     print(df_results)
-    df_results.to_csv("ragas_evaluation_results_8B_2k.csv", index=False)
-    print("\nResultados salvos em 'ragas_evaluation_results_8B_2k.csv'")
+    df_results.to_csv("ragas_evaluation_results_Gemini_recursive_2k_mapeado.csv", index=False)
+    print("\nResultados salvos em 'ragas_evaluation_results_Gemini_recursive_2k_mapeado.csv'")
 
 except Exception as e:
     LOGGER.error(f"A AVALIAÇÃO FALHOU! Ocorreu um erro durante 'ragas.evaluate':")

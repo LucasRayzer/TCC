@@ -4,7 +4,7 @@ import seaborn as sns
 import webbrowser
 import os
 
-file_path = 'C:/Users/11941578900/Documents/GitHub/TCC/ragas_evaluation_results_8B_2k.csv'
+file_path = 'C:/Users/11941578900/Documents/GitHub/TCC/Resultados_Llama_8B/ragas_evaluation_results_8B_8k.csv'
 
 try:
     print(f"Tentando ler o arquivo: {file_path}")
@@ -15,7 +15,7 @@ try:
     print("Gerando tabela HTML estilizada...")
     numeric_cols = ['faithfulness', 'answer_relevancy', 'context_precision', 'context_recall', 'answer_correctness']
 
-    # or doc vermelho ao verde
+    # cor doc vermelho ao verde
     cmap = sns.diverging_palette(10, 130, as_cmap=True)
 
     styled_df = df.style.background_gradient(
@@ -28,8 +28,8 @@ try:
     ).set_properties(**{'text-align': 'left', 'border': '1px solid black'})
 
     html = styled_df.to_html()
-
-    html_file_path = 'visualizacao_resultados_8B_4k.html'
+    
+    html_file_path = 'visualizacao_resultados_ragas_evaluation_results_8B_8k.html'
     with open(html_file_path, 'w', encoding='utf-8') as f:
         f.write(html)
     
@@ -55,16 +55,16 @@ try:
     
     plt.tight_layout()
     
-    chart_file_path = 'grafico_scores_ragas_8B_2k.png'
+    chart_file_path = 'grafico_scores_ragas_evaluation_results_8B_8k.png'
     plt.savefig(chart_file_path)
     
-    print(f"--> Gráfico de barras salvo como '{chart_file_path}'")
+    print(f" Gráfico de barras salvo como '{chart_file_path}'")
 
     #tabela no navegador
-    print("\nAbrindo a tabela de resultados no navegador...")
+    print("\nAbrindo a tabela de resultados no navegador")
     webbrowser.open('file://' + os.path.realpath(html_file_path))
 
 except FileNotFoundError:
-    print(f"ERRO: O arquivo '{file_path}' não foi encontrado neste diretório. Verifique se o nome está correto.")
+    print(f"O arquivo '{file_path}' não foi encontrado neste diretório. Nome incorreto")
 except Exception as e:
     print(f"Ocorreu um erro inesperado: {e}")
