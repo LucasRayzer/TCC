@@ -1,3 +1,18 @@
+import sys
+import asyncio
+import grpc
+
+def ignore_grpc_shutdown_error(loop, context):
+    msg = context.get("message", "")
+    if "POLLER" not in msg:
+        loop.default_exception_handler(context)
+
+try:
+    loop = asyncio.get_event_loop()
+    loop.set_exception_handler(ignore_grpc_shutdown_error)
+except Exception:
+    pass
+
 import os
 import logging
 import asyncio
@@ -152,7 +167,7 @@ async def main():
     try:
        
         # Limita o RAGAS a 5 chamadas paralelas de cada vez para evitar Rate Limit
-        config = RunConfig(max_workers=5)
+        config = RunConfig(max_workers=2)
 
         result = evaluate(
             dataset=ragas_dataset,
@@ -171,12 +186,12 @@ async def main():
         print("\nRESULTADOS DA AVALIAÇÃO")
         print(df_results) 
         
-        output_folder = "Resultados_Gemini"
+        output_folder = "Resultados_Gemini_2"
         
         # Garante que a pasta exista
         os.makedirs(output_folder, exist_ok=True) 
         
-        output_filename = "ragas_evaluation_results_gemini_8k.csv"
+        output_filename = "ragas_evaluation_results_gemini_8k_2.csv"
         output_path = os.path.join(output_folder, output_filename)
         df_results.to_csv(output_path, index=False, encoding="utf-8-sig")
 
@@ -184,6 +199,7 @@ async def main():
     except Exception as e:
         LOGGER.error(f"A AVALIAÇÃO FALHOu! Ocorreu um erro durante 'ragas.evaluate':")
         LOGGER.error(e)
+        LOGGER.error(traceback.format_exc())
 
 if __name__ == "__main__":
     asyncio.run(main())

@@ -7,12 +7,8 @@ load_dotenv()
 
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_community.vectorstores import FAISS
-from langchain.memory import ConversationBufferMemory
-from langchain.chains import ConversationalRetrievalChain
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_core.prompts import ChatPromptTemplate
-from langchain.text_splitter import RecursiveCharacterTextSplitter
-import streamlit as st
 from langchain.chains import RetrievalQA
 from langchain_google_genai import HarmBlockThreshold, HarmCategory
 
@@ -47,7 +43,7 @@ def load_vectorStore():
         model_kwargs={"device": DEVICE}
     )
     vectorStore = FAISS.load_local(
-        "faiss_index_reduzido_mapeado",
+        "faiss_index_reduzido_mapeado2",
         embeddings,
         allow_dangerous_deserialization=True
     )

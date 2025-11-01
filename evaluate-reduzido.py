@@ -1,5 +1,6 @@
 import os
 import logging
+import asyncio
 from datasets import Dataset
 from ragas import evaluate
 from ragas.metrics import (
@@ -9,6 +10,7 @@ from ragas.metrics import (
     context_precision,
     answer_correctness,
 )
+from ragas.run_config import RunConfig
  
 # o chatbot Llama para gerar as respostas como aluno
 from utils.chatbot import load_vectorStore, create_conversation_chain
@@ -74,88 +76,115 @@ ground_truths = [
     ["O programa da disciplina cursada deve corresponder a, no mínimo, 75% do conteúdo e da carga horária da disciplina que o(a) acadêmico(a) deveria cumprir na UDESC."]
 ]
 
-# Geração do Dataset usando o chatbot Llama
-print("Preparando o chatbot Llama para gerar o dataset de avaliação...")
-vector_store = load_vectorStore()
-conversation_chain = create_conversation_chain(vector_store)
 
-evaluation_data = []
+async def main():
+    print("Preparando o chatbot GEMINI para gerar o dataset de avaliação...")
+    vector_store = load_vectorStore()
+    conversation_chain = create_conversation_chain(vector_store)
 
-print("Gerando respostas para as perguntas de teste...")
-for i, question in enumerate(questions):
-    try:       
-        response = conversation_chain.invoke({"query": question}) 
-        
-        answer = response.get("result", "") 
-        
-        source_docs = response.get("source_documents", [])
-        contexts = [doc.page_content for doc in response.get("source_documents", [])]
+    evaluation_data = []
 
-        if not answer or not contexts:
-            LOGGER.warning(f"Resposta ou contexto vazio para a pergunta: '{question}'. Pulando.")
-            continue
+    print("Gerando respostas para as perguntas de teste (em paralelo)...")
 
-        # Coleta todos os documentos consultados
-        doc_names = []
-        for doc in source_docs:
-            doc_id = doc.metadata.get("document_id")
-            if doc_id and doc_id not in doc_names:
-                doc_names.append(doc_id)
+    tasks = []
+    for question in questions:
+        tasks.append(conversation_chain.ainvoke({"query": question}))
 
-        doc_names_str = ", ".join(doc_names) if doc_names else "Desconhecido"
+    try:
+        responses = await asyncio.gather(*tasks)
+        print("Respostas geradas. Processando...")
 
-        data_point = {
-            "question": question,
-            "answer": answer,
-            "contexts": contexts,
-            "ground_truth": ground_truths[i][0],
-            "document_id": doc_names_str,  
-        }
-        evaluation_data.append(data_point)
-        print(f"  - Pergunta {i+1} processada.")
+        for i, response in enumerate(responses):
+            question = questions[i] 
+            try: 
+                answer = response.get("result", "") 
+                source_docs = response.get("source_documents", [])
+                contexts = [doc.page_content for doc in response.get("source_documents", [])]
+
+                if not answer or not contexts:
+                    LOGGER.warning(f"Resposta ou contexto vazio para a pergunta: '{question}'. Pulando.")
+                    continue
+
+                # Coleta todos os documentos consultados
+                doc_names = []
+                for doc in source_docs:
+                    doc_id = doc.metadata.get("document_id")
+                    if doc_id and doc_id not in doc_names:
+                        doc_names.append(doc_id)
+
+                doc_names_str = ", ".join(doc_names) if doc_names else "Desconhecido"
+
+                data_point = {
+                    "question": question,
+                    "answer": answer,
+                    "contexts": contexts,
+                    "ground_truth": ground_truths[i][0], 
+                    "document_id": doc_names_str,
+                }
+                evaluation_data.append(data_point)
+                print(f"   - Pergunta {i+1} processada.")
+            except Exception as e:
+                LOGGER.error(f"Erro ao processar resposta para a pergunta '{question}': {e}")
+                
     except Exception as e:
-        LOGGER.error(f"Erro ao gerar resposta para a pergunta '{question}': {e}")
+        LOGGER.error(f"Erro crítico durante a geração de respostas com asyncio.gather: {e}")
+        return 
 
-if not evaluation_data:
-    raise ValueError("Nenhum dado de avaliação foi gerado. Verifique os logs.")
+    if not evaluation_data:
+        raise ValueError("Nenhum dado de avaliação foi gerado. Verifique os logs.")
 
-ragas_dataset = Dataset.from_list(evaluation_data)
+    ragas_dataset = Dataset.from_list(evaluation_data)
 
-# Configuração da Avaliação
-metrics = [
-    faithfulness,
-    answer_relevancy,
-    context_precision,
-    context_recall,
-    answer_correctness,
-]
+    # Configuração da Avaliação
+    metrics = [
+        faithfulness,
+        answer_relevancy,
+        context_precision,
+        context_recall,
+        answer_correctness,
+    ]
 
-from langchain_community.embeddings import HuggingFaceEmbeddings
-hf_embeddings = HuggingFaceEmbeddings(model_name="intfloat/multilingual-e5-base")
+    from langchain_community.embeddings import HuggingFaceEmbeddings
+    hf_embeddings = HuggingFaceEmbeddings(model_name="intfloat/multilingual-e5-base")
 
-# Execução da Avaliação (usando o Gemini como juiz)
-print("\nExecutando a avaliação com RAGAS usando Gemini como juiz")
-try:
-    result = evaluate(
-        dataset=ragas_dataset,
-        metrics=metrics,
-        llm=judge_llm, 
-        embeddings=hf_embeddings,
-        raise_exceptions=True
-    )
+    # Execução da avaliação usando o Gemini como juiz
+    print("\nExecutando a avaliação com RAGAS usando Gemini como juiz")
+    try:
+       
+        # Limita o RAGAS a 5 chamadas paralelas de cada vez para evitar Rate Limit
+        config = RunConfig(max_workers=2)
 
-    print("Avaliação concluída!")
-    df_results = result.to_pandas()
-    # Adiciona os documentos mapeados a cada pergunta
-    df_results["document_id"] = [d["document_id"] for d in evaluation_data]
+        result = evaluate(
+            dataset=ragas_dataset,
+            metrics=metrics,
+            llm=judge_llm, 
+            embeddings=hf_embeddings,
+            raise_exceptions=True,
+            run_config=config 
+        )
 
-    print("\nRESULTADOS DA AVALIAÇÃO")
-    output_folder = "Resultados_Llama_8B"
-    output_filename = "ragas_evaluation_results_8B_8k.csv"
-    output_path = os.path.join(output_folder, output_filename)
-    df_results.to_csv(output_path, index=False, encoding="utf-8-sig")
+        print("Avaliação concluída!")
+        df_results = result.to_pandas()
+        
+        df_results["document_id"] = [d["document_id"] for d in evaluation_data]
 
-    print(f"\nResultados salvos em '{output_path}'")
-except Exception as e:
-    LOGGER.error(f"A AVALIAÇÃO FALHOU! Ocorreu um erro durante 'ragas.evaluate':")
-    LOGGER.error(e)
+        print("\nRESULTADOS DA AVALIAÇÃO")
+        print(df_results) 
+        
+        output_folder = "Resultados_Llama_8B_2"
+        
+        # Garante que a pasta exista
+        os.makedirs(output_folder, exist_ok=True) 
+        
+        output_filename = "ragas_evaluation_results_8B_8k_2.csv"
+        output_path = os.path.join(output_folder, output_filename)
+        df_results.to_csv(output_path, index=False, encoding="utf-8-sig")
+
+        print(f"\nResultados salvos em '{output_path}'")
+    except Exception as e:
+        LOGGER.error(f"A AVALIAÇÃO FALHOu! Ocorreu um erro durante 'ragas.evaluate':")
+        LOGGER.error(e)
+        LOGGER.error(traceback.format_exc())
+
+if __name__ == "__main__":
+    asyncio.run(main())

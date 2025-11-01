@@ -1,16 +1,10 @@
 import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM, pipeline
 from langchain_community.vectorstores import FAISS
-from langchain_community.embeddings import HuggingFaceInstructEmbeddings
-from langchain.memory import ConversationBufferMemory
-from langchain.chains import ConversationalRetrievalChain
 from langchain_huggingface import HuggingFacePipeline
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_core.prompts import ChatPromptTemplate
-import re
 from langchain.chains import RetrievalQA
-from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain.retrievers.multi_query import MultiQueryRetriever
 
 
 # Configuração de device
@@ -60,7 +54,7 @@ def load_vectorStore():
         model_kwargs={"device": DEVICE}
     )
     vectorStore = FAISS.load_local(
-        "faiss_index_reduzido_mapeado",
+        "faiss_index_reduzido_mapeado2",
         embeddings,
         allow_dangerous_deserialization=True
     )

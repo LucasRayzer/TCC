@@ -54,7 +54,7 @@ vectorstore = FAISS.from_texts(
 )
 
 # Salva o índice FAISS localmente
-faiss_path = "faiss_index_reduzido_mapeado"
+faiss_path = "faiss_index_reduzido_mapeado2"
 vectorstore.save_local(faiss_path)
 
 # Salva também os textos e metadados juntos em pickle

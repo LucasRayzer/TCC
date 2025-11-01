@@ -4,7 +4,8 @@ import seaborn as sns
 import webbrowser
 import os
 
-file_path = 'C:/Users/11941578900/Documents/GitHub/TCC/Resultados_Llama_8B/ragas_evaluation_results_8B_8k.csv'
+# file_path = 'C:/Users/11941578900/Documents/GitHub/TCC/Resultados_Llama_8B_2/ragas_evaluation_results_8B_8k_2.csv'
+file_path = 'C:/Users/11941578900/Documents/GitHub/TCC/Resultados_Gemini_2/ragas_evaluation_results_gemini_8k_2.csv'
 
 try:
     print(f"Tentando ler o arquivo: {file_path}")
@@ -29,7 +30,9 @@ try:
 
     html = styled_df.to_html()
     
-    html_file_path = 'visualizacao_resultados_ragas_evaluation_results_8B_8k.html'
+    # html_file_path = 'visualizacao_resultados_ragas_evaluation_results_8B_8k_2.html'
+    html_file_path = 'visualizacao_resultados_ragas_evaluation_results_gemini_8k_2.html'
+
     with open(html_file_path, 'w', encoding='utf-8') as f:
         f.write(html)
     
@@ -55,7 +58,9 @@ try:
     
     plt.tight_layout()
     
-    chart_file_path = 'grafico_scores_ragas_evaluation_results_8B_8k.png'
+    # chart_file_path = 'grafico_scores_ragas_evaluation_results_8B_8k_2.png'
+    chart_file_path = 'grafico_scores_ragas_evaluation_results_gemini_8k_2.png'
+
     plt.savefig(chart_file_path)
     
     print(f" Gráfico de barras salvo como '{chart_file_path}'")

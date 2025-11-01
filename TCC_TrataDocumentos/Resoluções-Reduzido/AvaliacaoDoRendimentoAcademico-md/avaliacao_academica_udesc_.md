@@ -28,6 +28,6 @@ SEÇÃO II
 DA AVALIAÇÃO DO RENDIMENTO ACADÊMICO (...)
 Universidade do Estado de Santa Catarina - UDESC
 Av. Madre Benvenuta, 2007 – Itacorubi – 88.035-001
-Florianópolis SC Fone (48) 3321 8000 – www.udesc.br
+Florianópolis SC Fone (48) 3321 8000 –
 ```
 
