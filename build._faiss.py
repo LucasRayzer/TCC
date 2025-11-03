@@ -38,7 +38,7 @@ for md_file in base_path.rglob("*.md"):
     chunks = splitter.split_text(content)
     all_texts.extend(chunks)
     
-    # Captura o nome base do documento original (ex: 039-2015-cpe.pdf)
+    # Captura o nome base do documento original
     doc_name = md_file.stem.replace(".md", ".pdf")
     
     # Adiciona metadado para cada chunk
