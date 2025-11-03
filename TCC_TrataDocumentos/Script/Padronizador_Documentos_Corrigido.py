@@ -15,16 +15,13 @@ def find_strikethroughs(page, min_length=20, max_linewidth=4.0):
     """
     strikes = []
 
-    # 1) linhas (page.lines) — podem ter y0 ~= y1 ou small height
     for line in getattr(page, "lines", []):
-        # pdfplumber line dict normalmente tem: x0,x1,y0,y1,width (width = linewidth)
         x0 = line.get("x0", line.get("x0", 0))
         x1 = line.get("x1", line.get("x1", 0))
         y0 = line.get("y0", line.get("y0", 0))
         y1 = line.get("y1", line.get("y1", 0))
         linewidth = line.get("width", line.get("linewidth", 0.0))
 
-        # horizontal? y difference small
         if abs(y1 - y0) <= 2.5 and (x1 - x0) >= min_length and 0.1 < linewidth <= max_linewidth:
             top = min(y0, y1)
             bottom = max(y0, y1)
@@ -36,7 +33,7 @@ def find_strikethroughs(page, min_length=20, max_linewidth=4.0):
                 "linewidth": float(linewidth)
             })
 
-    # 2) rects — às vezes strikethroughs são retângulos finos ou traços desenhados
+    # às vezes strikethroughs são retângulos finos ou traços desenhados
     for rect in getattr(page, "rects", []):
         x0 = rect.get("x0", 0)
         x1 = rect.get("x1", 0)
@@ -45,18 +42,17 @@ def find_strikethroughs(page, min_length=20, max_linewidth=4.0):
         height = rect.get("height", abs(bottom - top) if bottom and top else rect.get("height", 0))
         width = rect.get("width", abs(x1 - x0) if x1 and x0 else rect.get("width", 0))
 
-        # Verifique cores/stroking info: algumas versões não têm 'fill' verdadeiro
+        
         fill = rect.get("fill", False)
         non_stroking = rect.get("non_stroking_color", None)
         stroking = rect.get("stroking_color", None)
 
         if height is None:
-            # fallback: calc pela top/bottom
             height = abs(bottom - top)
 
         # é um retângulo muito fino e longo (possível strikethrough)
         if 0.3 < height <= 4.0 and width >= min_length:
-            # se tiver alguma cor ou stroke, provável que seja riscado
+            
             if fill or non_stroking is not None or stroking is not None or height <= 3.0:
                 strikes.append({
                     "x0": float(x0),
@@ -66,12 +62,7 @@ def find_strikethroughs(page, min_length=20, max_linewidth=4.0):
                     "linewidth": float(height)
                 })
 
-    # 3) às vezes objetos 'lines' também aparecem em page.objects ou page.edges — verificar se presente
-    # (mantive simples por enquanto)
-
-    # Opcional: mesclar strikes muito próximos (para evitar múltiplos strikes quase idênticos)
-    if strikes:
-        strikes = _merge_close_strikes(strikes)
+    
 
     return strikes
 
@@ -114,7 +105,7 @@ def is_char_struck(char, strikethroughs, x_pad=1.0, y_pad=1.0):
         ho = (cx1 + x_pad > s['x0'] and cx0 - x_pad < s['x1'])
         # considere a linha média vertical do strike
         s_mid = (s['top'] + s['bottom']) / 2.0
-        # caractere é verticalmente atravessado pela linha (com tolerância)
+        # caractere é verticalmente atravessado pela linha
         vo = (s_mid + y_pad > ctop and s_mid - y_pad < cbottom)
 
         if ho and vo:
