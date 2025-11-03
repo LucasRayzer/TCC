@@ -171,12 +171,12 @@ async def main():
         print("\nRESULTADOS DA AVALIAÇÃO")
         print(df_results) 
         
-        output_folder = "Resultados_Llama_8B_2"
+        output_folder = "Resultados_Llama_8B"
         
         # Garante que a pasta exista
         os.makedirs(output_folder, exist_ok=True) 
         
-        output_filename = "ragas_evaluation_results_8B_8k_2.csv"
+        output_filename = "ragas_evaluation_results_8B_8k.csv"
         output_path = os.path.join(output_folder, output_filename)
         df_results.to_csv(output_path, index=False, encoding="utf-8-sig")
 

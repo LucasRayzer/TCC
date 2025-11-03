@@ -1,6 +1,14 @@
 import sys
 import asyncio
 import grpc
+import traceback
+import platform
+
+if platform.system() == "Windows":
+    try:
+        asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+    except Exception:
+        pass
 
 def ignore_grpc_shutdown_error(loop, context):
     msg = context.get("message", "")
@@ -167,17 +175,21 @@ async def main():
     try:
        
         # Limita o RAGAS a 5 chamadas paralelas de cada vez para evitar Rate Limit
-        config = RunConfig(max_workers=2)
-
-        result = evaluate(
-            dataset=ragas_dataset,
-            metrics=metrics,
-            llm=judge_llm, 
-            embeddings=hf_embeddings,
-            raise_exceptions=True,
-            run_config=config 
-        )
-
+        config = RunConfig(max_workers=5)
+        try:
+            result = evaluate(
+                dataset=ragas_dataset,
+                metrics=metrics,
+                llm=judge_llm,
+                embeddings=hf_embeddings,
+                raise_exceptions=False,   # mudar para False durante debug para não interromper tudo
+                run_config=config
+            )
+        except Exception as e_eval:
+            LOGGER.error("evaluate() lançou exceção direta: %s", e_eval)
+            LOGGER.error(traceback.format_exc())
+            raise
+    
         print("Avaliação concluída!")
         df_results = result.to_pandas()
         
@@ -186,12 +198,12 @@ async def main():
         print("\nRESULTADOS DA AVALIAÇÃO")
         print(df_results) 
         
-        output_folder = "Resultados_Gemini_2"
+        output_folder = "Resultados_Gemini"
         
         # Garante que a pasta exista
         os.makedirs(output_folder, exist_ok=True) 
         
-        output_filename = "ragas_evaluation_results_gemini_8k_2.csv"
+        output_filename = "ragas_evaluation_results_gemini_5k.csv"
         output_path = os.path.join(output_folder, output_filename)
         df_results.to_csv(output_path, index=False, encoding="utf-8-sig")
 

@@ -7,46 +7,116 @@ import numpy as np
 # Caminho base
 base_path = Path(r"C:\Users\11941578900\Documents\GitHub\TCC\TCC_TrataDocumentos\Resoluções-Reduzido")
 
-def find_strikethroughs(page):
+def find_strikethroughs(page, min_length=20, max_linewidth=4.0):
     """
-    Encontra todos os objetos line e rect na página que
-    parecem ser linhas de "strikethrough" (riscado).
+    Detecta objetos na página que provavelmente são strikethroughs.
+    Retorna lista de dicionários com x0,x1,top,bottom,linewidth.
+    Mais robusto: detecta tanto 'lines' (com y0/y1) quanto 'rects' (com height).
     """
-    strikethroughs = []
-    
-    # Encontra linhas horizontais finas
-    for line in page.lines:
-        if (line['height'] == 0 and 
-            line['linewidth'] < 2 and 
-            line['linewidth'] > 0.5):
-            strikethroughs.append(line)
+    strikes = []
 
-    for rect in page.rects:
-        if (rect['height'] < 2 and rect['height'] > 0.5 and 
-            rect['width'] > 2 and (rect['fill'] or rect['non_stroking_color'] is not None)):
-            
-            strikethroughs.append({
-                'x0': rect['x0'],
-                'top': rect['top'],
-                'x1': rect['x1'],
-                'bottom': rect['bottom'], 
-                'linewidth': rect['height']
+    # 1) linhas (page.lines) — podem ter y0 ~= y1 ou small height
+    for line in getattr(page, "lines", []):
+        # pdfplumber line dict normalmente tem: x0,x1,y0,y1,width (width = linewidth)
+        x0 = line.get("x0", line.get("x0", 0))
+        x1 = line.get("x1", line.get("x1", 0))
+        y0 = line.get("y0", line.get("y0", 0))
+        y1 = line.get("y1", line.get("y1", 0))
+        linewidth = line.get("width", line.get("linewidth", 0.0))
+
+        # horizontal? y difference small
+        if abs(y1 - y0) <= 2.5 and (x1 - x0) >= min_length and 0.1 < linewidth <= max_linewidth:
+            top = min(y0, y1)
+            bottom = max(y0, y1)
+            strikes.append({
+                "x0": float(x0),
+                "x1": float(x1),
+                "top": float(top),
+                "bottom": float(bottom),
+                "linewidth": float(linewidth)
             })
-    return strikethroughs
 
-def is_char_struck(char, strikethroughs):
+    # 2) rects — às vezes strikethroughs são retângulos finos ou traços desenhados
+    for rect in getattr(page, "rects", []):
+        x0 = rect.get("x0", 0)
+        x1 = rect.get("x1", 0)
+        top = rect.get("top", rect.get("y0", 0))
+        bottom = rect.get("bottom", rect.get("y1", top))
+        height = rect.get("height", abs(bottom - top) if bottom and top else rect.get("height", 0))
+        width = rect.get("width", abs(x1 - x0) if x1 and x0 else rect.get("width", 0))
+
+        # Verifique cores/stroking info: algumas versões não têm 'fill' verdadeiro
+        fill = rect.get("fill", False)
+        non_stroking = rect.get("non_stroking_color", None)
+        stroking = rect.get("stroking_color", None)
+
+        if height is None:
+            # fallback: calc pela top/bottom
+            height = abs(bottom - top)
+
+        # é um retângulo muito fino e longo (possível strikethrough)
+        if 0.3 < height <= 4.0 and width >= min_length:
+            # se tiver alguma cor ou stroke, provável que seja riscado
+            if fill or non_stroking is not None or stroking is not None or height <= 3.0:
+                strikes.append({
+                    "x0": float(x0),
+                    "x1": float(x1),
+                    "top": float(min(top, bottom)),
+                    "bottom": float(max(top, bottom)),
+                    "linewidth": float(height)
+                })
+
+    # 3) às vezes objetos 'lines' também aparecem em page.objects ou page.edges — verificar se presente
+    # (mantive simples por enquanto)
+
+    # Opcional: mesclar strikes muito próximos (para evitar múltiplos strikes quase idênticos)
+    if strikes:
+        strikes = _merge_close_strikes(strikes)
+
+    return strikes
+
+def _merge_close_strikes(strikes, y_tol=1.5, x_tol=1.5):
     """
-    Verifica se um objeto 'char' se sobrepõe a alguma
-    das linhas/retângulos de strikethrough.
+    Mescla strikes que se sobrepõem ou estão muito próximos (evita duplicatas).
     """
-  
+    merged = []
+    strikes = sorted(strikes, key=lambda s: (s['top'], s['x0']))
+    for s in strikes:
+        if not merged:
+            merged.append(dict(s))
+            continue
+        last = merged[-1]
+        # se overlap vertical e horizontal ou muito próximo, expande last
+        vert_overlap = not (s['bottom'] < last['top'] - y_tol or s['top'] > last['bottom'] + y_tol)
+        horiz_overlap = not (s['x1'] < last['x0'] - x_tol or s['x0'] > last['x1'] + x_tol)
+        if vert_overlap and horiz_overlap:
+            last['x0'] = min(last['x0'], s['x0'])
+            last['x1'] = max(last['x1'], s['x1'])
+            last['top'] = min(last['top'], s['top'])
+            last['bottom'] = max(last['bottom'], s['bottom'])
+            last['linewidth'] = max(last['linewidth'], s.get('linewidth', 0))
+        else:
+            merged.append(dict(s))
+    return merged
+
+def is_char_struck(char, strikethroughs, x_pad=1.0, y_pad=1.0):
+    """
+    Retorna True se o char (dicionário com x0,x1,top,bottom) for coberto por algum strikethrough.
+    Usa margens horizontais e verticais (x_pad, y_pad) para tolerância.
+    """
+    cx0 = float(char.get("x0", 0))
+    cx1 = float(char.get("x1", 0))
+    ctop = float(char.get("top", char.get("y0", 0)))
+    cbottom = float(char.get("bottom", char.get("y1", 0)))
+
     for s in strikethroughs:
+        # sobreposição horizontal
+        ho = (cx1 + x_pad > s['x0'] and cx0 - x_pad < s['x1'])
+        # considere a linha média vertical do strike
+        s_mid = (s['top'] + s['bottom']) / 2.0
+        # caractere é verticalmente atravessado pela linha (com tolerância)
+        vo = (s_mid + y_pad > ctop and s_mid - y_pad < cbottom)
 
-        ho = (char['x0'] < s['x1'] and char['x1'] > s['x0'])
-        
-        s_mid_y = (s['top'] + s['bottom']) / 2
-        vo = (s_mid_y > char['top'] and s_mid_y < char['bottom'])
-        
         if ho and vo:
             return True
     return False
@@ -54,40 +124,34 @@ def is_char_struck(char, strikethroughs):
 
 def extract_text(pdf_path):
     """
-    Extrai texto do PDF, filtrando qualquer texto
-    que esteja coberto por um "strikethrough".
+    Extrai texto do PDF, removendo caracteres cobertos por strikes detectados.
     """
     final_text = ""
     with pdfplumber.open(pdf_path) as pdf:
         for page in pdf.pages:
-            if not page.chars: 
+            if not page.chars:
                 continue
 
-            # Encontra todos os elementos gráficos de "risco" na página
+            # Detecta strikes
             strikethroughs = find_strikethroughs(page)
-            
-            #se não houver riscos, usa o método padrão rápido
+
             if not strikethroughs:
                 page_text = page.extract_text()
                 if page_text:
                     final_text += page_text + "\n"
                 continue
-            
-            # Obtém todos os caracteres da página
+
             all_chars = page.chars
-            
-            # Filtra a lista, mantendo apenas os caracteres não riscados
-            filtered_chars = [
-                c for c in all_chars 
-                if not is_char_struck(c, strikethroughs)
-            ]
-            
+
+            # Filtra caracteres riscados
+            filtered_chars = [c for c in all_chars if not is_char_struck(c, strikethroughs)]
+
+            # extrai texto a partir dos chars filtrados
             page_text = pdfplumber.utils.extract_text(
-                filtered_chars, 
-                x_tolerance=3, 
-                y_tolerance=3  
+                filtered_chars,
+                x_tolerance=3,
+                y_tolerance=3
             )
-            
             if page_text:
                 final_text += page_text + "\n"
 
@@ -138,7 +202,7 @@ def save_chunks_markdown(chunks, output_path, pdf_name):
             f.write("\n```\n\n")
 
 def embed_and_store(chunks, index, model):
-    if not chunks:  
+    if not chunks:
         return index
     vectors = model.encode(chunks, convert_to_numpy=True)
     vectors = np.atleast_2d(vectors)  # garante corpo (n, d)
@@ -162,7 +226,7 @@ for pdf_path in base_path.rglob("*.pdf"):
 
     # Cria pasta paralela com sufixo -md
     parent_dir = pdf_path.parent
-    md_dir = parent_dir.parent / (parent_dir.name + "-md")  
+    md_dir = parent_dir.parent / (parent_dir.name + "-md")
     output_md = md_dir / pdf_path.with_suffix(".md").name
 
     save_chunks_markdown(chunks, output_md, pdf_path.name)

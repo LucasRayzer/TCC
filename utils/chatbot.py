@@ -54,7 +54,7 @@ def load_vectorStore():
         model_kwargs={"device": DEVICE}
     )
     vectorStore = FAISS.load_local(
-        "faiss_index_reduzido_mapeado2",
+        "faiss_index_reduzido_mapeado",
         embeddings,
         allow_dangerous_deserialization=True
     )
@@ -65,7 +65,7 @@ def create_conversation_chain(vectorStore):
     qa_chain = RetrievalQA.from_chain_type(
         llm=llm,
         chain_type="stuff",
-        retriever=vectorStore.as_retriever(search_kwargs={"k": 8}),
+        retriever=vectorStore.as_retriever(search_kwargs={"k": 5}),
         chain_type_kwargs={"prompt": QA_PROMPT},
         return_source_documents=True,
     )
