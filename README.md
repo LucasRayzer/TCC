@@ -15,8 +15,15 @@ O _workflow_ do projeto é dividido em três etapas principais:
 ## 📦 Estrutura do Repositório
 
 | Arquivo                                | Descrição                                                                                                                                                              |
-| :------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|:---------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `Padronizador_Documentos_Corrigido.py` | Pipeline de extração, limpeza (remoção de texto riscado/alterado), normalização e _chunking_ de PDFs em arquivos Markdown por Artigo/Capítulo.                         |
 | `build._faiss.py`                      | Script para criar o índice vetorial FAISS a partir dos arquivos Markdown gerados pelo padronizador, utilizando o modelo de embeddings `intfloat/multilingual-e5-base`. |
 | `chatbot_Gemini.py`                    | Implementação da _chain_ RAG usando o modelo **Gemini 2.5 Pro** via API do Google.                                                                                     |
 | `chatbot.py`                           | Implementação da _chain_ RAG usando o modelo **Llama 3.1 8B Instruct** rodando localmente (ou em GPU via `device_map="auto"`).                                         |
+### Dados e Resultados
+
+| Diretório | Descrição |
+|:---|:---|
+| `Resultados_Gemini/` | Contém os arquivos CSV gerados com as métricas de avaliação do RAGAS utilizando o modelo Gemini. |
+| `Resultados_Llama_8B/` | Contém os arquivos CSV gerados com as métricas de avaliação do RAGAS utilizando o modelo Llama 3.1 8B. |
+| `Graficos_Comparativos/` | Pasta de saída onde são salvos os gráficos comparativos (PNG) gerados pelos scripts de visualização. |
